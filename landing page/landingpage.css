@@ -1,22 +1,22 @@
 .header {
     overflow: hidden;
     background-color: #ffcb00;
-    padding: 1px 180px;
+    padding: 0.1px 5px;
   }
   
   .header a {
     float: left;
     color: black;
     text-align: center;
-    padding: 60px;
+    padding: 12px;
     text-decoration: none;
-    font-size: 25px; 
-    line-height: 150px;
+    font-size: 15px; 
+    line-height: 50px;
     border-radius: 4px;
   }
   
   .header a.logo {
-    font-size: 85px;
+    font-size: 25px;
     font-weight: bold;
     font-family:verdana;
   }
@@ -38,18 +38,18 @@
     }
   }
   button{
-      margin:60px;
+      margin:20px;
   }
 
   .button1 {
     background-color: white;
     border: none;
     color:black;
-    padding: 45px 90px;
+    padding: 10px 30px;
     text-align: center;
     /* margin: 400px; */
     
-    font-size: 70px;
+    font-size: 20px;
     /* margin: 6px 4px; */
     cursor: pointer;
     border-radius: 50px;
@@ -58,11 +58,11 @@
     background-color:black;
     border: none;
     color: white;
-    padding: 45px 90px;
+    padding: 10px 30px;
     text-align: center;
     
     
-    font-size: 70px;
+    font-size: 20px;
     /* margin: 6px 4px; */
     cursor: pointer;
     border-radius: 50px;
@@ -84,7 +84,7 @@
 }
 #slider figure img{
     width:20%;
-    height:2200px;
+    height:600px;
 
     float:left;
 }
@@ -144,7 +144,7 @@ h1,h3{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-button{
+.buybutton{
   padding: 8px;
   background-color: yellow;
   background-image: linear-gradient(to bottom right, orange, yellow); 
