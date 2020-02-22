@@ -1,3 +1,104 @@
+.header {
+    overflow: hidden;
+    background-color: #ffcb00;
+    padding: 1px 180px;
+  }
+  
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 60px;
+    text-decoration: none;
+    font-size: 25px; 
+    line-height: 150px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+    font-size: 85px;
+    font-weight: bold;
+    font-family:verdana;
+  }
+  
+  
+  .header-right {
+    float: right;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    
+    .header-right {
+      float: none;
+    }
+  }
+  button{
+      margin:60px;
+  }
+
+  .button1 {
+    background-color: white;
+    border: none;
+    color:black;
+    padding: 45px 90px;
+    text-align: center;
+    /* margin: 400px; */
+    
+    font-size: 70px;
+    /* margin: 6px 4px; */
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  .button2 {
+    background-color:black;
+    border: none;
+    color: white;
+    padding: 45px 90px;
+    text-align: center;
+    
+    
+    font-size: 70px;
+    /* margin: 6px 4px; */
+    cursor: pointer;
+    border-radius: 50px;
+  }
+
+#slider
+{
+    overflow: hidden;
+}
+#slider figure{
+    position: relative;
+    width:500%;
+    margin:0;
+    left:0;
+    animation: 10s slider infinite;
+}
+#slider figure:hover {
+	/*animation-play-state: paused; enable for pause on hover*/
+}
+#slider figure img{
+    width:20%;
+    height:2200px;
+
+    float:left;
+}
+
+@keyframes slider {
+	0% { left: 0; }
+	30% { left: 0; }
+	33% { left: -100%; }
+	63% { left: -100%; }
+	66% { left: -200%; }
+	95% { left: -200%; }
+	100% { left: 0; }
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -186,4 +287,5 @@ li{
 a:hover{
     font-weight: bold;
 }
+
 
