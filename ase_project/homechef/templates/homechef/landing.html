@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css" href="{%static 'homechef/landingpage.css'%}">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+       
+    <body>
+      <div class="header">
+            <a href="#default" class="logo">HOMECHEF</a>
+            <div class="header-right">
+              {% if user.is_authenticated %}
+                <a href="{% url 'profile' %}"><button class="button1">Profile</button></a>
+                <a href="{% url 'logout' %}"><button class="button2">Log out</button></a>
+              {% else %}
+                <a href="{% url 'register' %}"><button class="button1">Sign up</button></a>
+                <a href="{% url 'login' %}"><button class="button2">Log in</button></a>
+              {% endif %}
+            </div>
+         </div>
+          
+         <div id="slider">
+            <figure>
+                <img src="{%static 'homechef/pic1.jpeg'%}">
+                <img src="{%static 'homechef/pic8.jpg'%}">
+                <img src="{%static 'homechef/pic10.jpg'%}">
+               
+
+            </figure>
+         </div>
+        <div class="advertise">
+            <div class="items"><h1 style="padding-left: 558px;">Our popular dishes</h1>
+                <img src="{%static 'homechef/biryani.jfif'%}" style="height:190px;float: right;margin: 50px;"/>
+                <img src="{%static 'homechef/starter.jfif'%}" style="height:200px;float: right;margin: 50px;"/>
+                
+                <img src="{%static 'homechef/moussee.jfif'%}" style="height:200px;float: right;margin: 50px;"/>
+                <img src="{%static 'homechef/food2.jfif'%}" style="height:200px;float: right;margin: 50px;"/>
+                
+            </div>
+        </div>
+        
+        <div class="shopping">
+            <img src="{%static 'homechef/chef-cooking.png'%}" height="450px"/>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                      <h3>Want to inspire with your cooking</h3>
+                      <h1>Join us</h1>
+                      <p>We provide the best online platform for chefs to reach out and earn as a freelancer.</p>
+                     
+                  </div>
+                  <div class="flip-card-back">
+                      <br><br><br><br><br><br>
+                    <p>We provide the best online platform for chefs to reach out and earn as a freelancer.</p>
+                    <br>
+                    <button class="buybutton">Join</button>
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <h1>Hungry?!!</h1>
+                    <h3>You are at the right place!</h3>
+                    <p>Enjoy your favourite items from your favourite chefs.</p>
+                    
+                  </div>
+                  <div class="flip-card-back">
+                      <br><br><br><br><br><br>
+                    <p>Enjoy your favourite items from your favourite chefs.</p>
+                    <br>
+                    <button class="buybutton">Buy now</button>
+                  </div>
+                </div>
+              </div>
+              
+        <!-- """hi"""    -->
+        </div>
+        <div class="popular">
+            <div class="counters"><h2 class="all">1000</h2><h1 class="first">Our chefs</h1></div>
+            <div class="counters"><h2 class="all">1000</h2><h1 class="second">Our customers</h1></div>
+            <div class="counters"><h2 class="all">1000</h2><h1 class="third">Our volunteers</h1></div>
+        </div>
+        <div class="volunteer">
+            <img src="{%static 'homechef/chef-cooking.png'%}" height="450px"/>
+            <div class="flip-card1">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                        
+
+                  </div>
+                  <div class="flip-card-back">
+                    
+                  </div>
+                </div>
+              </div>
+              <div class="flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                      Hungry?!<br>
+                      You are at the right place<br>
+                      
+                  </div>
+                  <div class="flip-card-back">
+                    
+                  </div>
+                </div>
+              </div>
+              
+              
+        </div>
+        <div class="stats">
+           <h1 style="padding-left: 555px;">What do our customers say?</h1> 
+           <p style="padding-left: 10px;border-left: 5px solid black;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit.<br> Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+           <p style="padding-right: 10px;border-right: 5px solid #ffcb00;text-align: right;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+           <p style="padding-left: 10px;border-left: 5px solid orangered;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+           <p style="padding-right: 10px;border-right: 5px solid blue;text-align: right;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+        </div>
+        <footer>
+            <div class="top">
+                <div class="grid-container">
+                    <div class="grid-item"><h1></h1></div>
+                    <div class="grid-item">CONTACT US</div>
+                    <div class="grid-item">LEGAL</div>
+                </div>
+            </div>
+            
+            
+        </footer>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>
