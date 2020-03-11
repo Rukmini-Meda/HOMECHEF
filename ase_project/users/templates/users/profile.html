@@ -3,21 +3,23 @@
 <!DOCTYPE html>
 <html>
     <head>
+      <title>Profile</title>
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-      <link rel="stylesheet" type="text/css" href="{%static 'homechef/landingpage.css'%}">
       <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
        
     <body>
 
-      <div class="header">
-        <a href="{% url 'landing' %}" class="logo">HOMECHEF</a>
-        <div class="header-right">
-            <a href="{% url 'landing' %}"><button class="button1">Home</button></a>
-            <a href="{% url 'logout' %}"><button class="button2">Log out</button></a>
-
-        </div>
-      </div>
+      <nav class="navbar navbar-expand-lg navbar-warning bg-warning">
+           <a class="navbar-brand  text-dark"  href="{% url 'landing' %}">HomeChef</a>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+           <span class="navbar-toggler-icon"></span>
+           </button>
+            <div  class="ml-auto" >
+            <a href="{% url 'landing' %}" class="mr-5"><button class="btn btn-primary ">Home</button></a>
+            </div>
+      </nav>
 
       <div class="content-section">
       <div class="media">
