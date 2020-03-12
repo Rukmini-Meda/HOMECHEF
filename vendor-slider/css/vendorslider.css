@@ -1,3 +1,5 @@
+
+
 .header {
     overflow: hidden;
     background-color: #ffcb00;
@@ -142,6 +144,20 @@
     font-size: 36px;
     margin-left: 50px;
   }
+
+  .slider-box{
+  height:350px;
+  width:250px;
+  position:relative;
+  background-color:#FFFFFF;
+  border-radius:5px;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
   
   /* The button used to open the sidebar */
   .openbtn {
@@ -168,13 +184,40 @@
     .sidebar {padding-top: 5px;}
     .sidebar a {font-size: 18px;}
   }
-  
-  
+
+   .rating-star{
+    position: relative;
+    left:50%;
+    right:50%;
+    transform: translate(-75%,0%);
+  }
+  .rating-star > input { display: none; } 
+  .rating-star > label:before { 
+    margin: 5px;
+    font-size:17px;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+  }
+  .rating-star > .half:before { 
+    content: "\f089";
+    position: absolute;
+  }
+  .rating-star > label { 
+    color: #ddd; 
+   float: right; 
+  }
+  .rating-star > input:checked ~ label,
+  .rating-star:not(:checked) > label:hover,
+  .rating-star:not(:checked) > label:hover ~ label { color: #FFD700;  }
+  .rating-star > input:checked + label:hover,
+  .rating-star > input:checked ~ label:hover,
+  .rating-star > label:hover ~ input:checked ~ label,
+  .rating-star > input:checked ~ label:hover ~ label { color: #FFED85;  }  
+
   .card-img-top
   {
-    padding:20px;
-    width:160px;
-    height:140px;
+    height:150px;
   }
   .card-title
   {
@@ -192,24 +235,4 @@
   {
     margin-left:40px;
   }
-  .card{
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
-    transition: 0.2s ease;
 
-  }
-  .card:hover,
-  .card:focus{box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  transition:0.2s ease;}
-  .card:active{
-
-  box-shadow:0 1px 2px rgba(0,0,0,0.4);
-  transition:0.2s ease;
-  }
-  /* .shadow {
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
-    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
-    &:hover {
-      box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
-    }
-   }
-   */
