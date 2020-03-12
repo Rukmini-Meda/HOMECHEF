@@ -1,0 +1,107 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'users/style.css' %}"/>
+       <title>HOMECHEF</title>
+       </head>
+<body>
+    <div class="container" id="container">
+                <div class="form-container sign-up-container">
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        <fieldset class = "form-group">
+                        <legend class="border-bottom mb-4">Create Account</legend>
+                        <!-- <div class="container"> -->
+                            <!-- <h2>Vertical (basic) form</h2> -->
+                            <!-- <form action="/action_page.php"> -->
+                              
+                              <!-- <button type="submit" class="btn btn-default">Submit</button> -->
+                            <!-- </form> -->
+                          <!-- </div> -->
+                          <div class="form-group">
+                            <label for="username" style="float: left;">Username</label>
+                            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
+                          </div>
+                          <div class="form-group">
+                            <label for="first_name" style="float: left;">First Name</label>
+                            <input type="first_name" class="form-control" id="first_name" placeholder="Enter first_name" name="first_name">
+                          </div> 
+                          <div class="form-group">
+                            <label for="last_name" style="float: left;">Last Name</label>
+                            <input type="last_name" class="form-control" id="last_name" placeholder="Enter last_name" name="last_name">
+                          </div>
+                          <div class="form-group">
+                            <label for="email" style="float: left;">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                          </div>
+                          <div class="form-group">
+                            <label for="password1" style="float: left;">Password</label>
+                            <input type="password" class="form-control" id="password1" placeholder="Enter password" name="password1">
+                          </div>
+                          <div class="form-group">
+                            <label for="password2" style="float: left;">Password confirmation</label>
+                            <input type="password" class="form-control" id="password2" placeholder="Enter password" name="password2">
+                          </div> 
+                        
+                        </fieldset>
+                        <div class="row border-bottom">
+                        <div class="col">
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-warning">Sign Up</button>
+                            </div>
+                            </div>     
+                        </div>
+                    </form>
+                </div>
+                <div class="form-container sign-in-container">
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <fieldset class = "form-group">
+                        <legend class="border-bottom mb-4">Log In</legend>
+                        
+                        <!-- {{ form|crispy }} -->
+                        <div class="form-group">
+                            <label for="username" style="float: left;">Username</label>
+                            <input type="username" class="form-control" id="username" placeholder="Enter username" name="username">
+                          </div>
+                          <div class="form-group">
+                            <label for="password" style="float: left;">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
+                          </div>
+                        </fieldset>
+                        <div class="row border-bottom">
+                        <div class="col">
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-warning">Sign In</button>
+                            </div>
+                            </div>       
+                        </div>
+                    </form>
+                </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-left">
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Log In</button>
+                    </div>
+                    <div class="overlay-panel overlay-right">
+                        <h1>Hello, Friend!</h1>
+                        <p>Enter your personal details and start journey with us</p>
+                        <button class="ghost" id="signUp">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="{% static 'users/main.js' %}"></script> 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>     
+    </body>
+</html>  

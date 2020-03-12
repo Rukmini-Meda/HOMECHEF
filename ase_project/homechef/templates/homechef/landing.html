@@ -1,41 +1,198 @@
+{% extends 'homechef/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
+{% block content %}
+    <div id="carousel-example m-0" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example" data-slide-to="1"></li>
+      <li data-target="#carousel-example" data-slide-to="2"></li>
+    </ol>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-warning bg-warning">
-      <a class="navbar-brand  text-dark"  href="{% url 'landing' %}">HomeChef</a>
-       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-       </button>
-<div class="collapse navbar-collapse  d-flex justify-content-end pr-5" id="navbarNavDropdown">
- <ul class="navbar-nav ">
-     {% if user.is_authenticated %}
-     <li class="nav-item dropdown ">
-        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ user.username }}
-        </a>
-       <div class="dropdown-menu " aria-labelledby="navbarDropdownMenuLink">
-         <a href="{% url 'profile' %}" class="dropdown-item" href="#">My Profile</a>
-         <a class="dropdown-item" href="#">Order</a>
-         <a class="dropdown-item" href="#">Addresses</a>
-         <a href="{% url 'logout' %}"class="dropdown-item" href="#">Log out</a>
-      {% else %}
-         <a href="{% url 'register' %}"><button class="btn btn-primary mr-3">Sign up</button></a>
-         <a href="{% url 'login' %}"><button class="btn btn-info">Log in</button></a>
-       {% endif %}
-       </div>
-      </li>
-  </ul>
- </div>
-  </nav>
+  <div class="carousel-inner">
+    <div class="item active">
+      <a href="#"><img src="{% static 'homechef/pic1.jpeg' %}" style="width: 1537px;height: 500px;"/></a>
+      <div class="carousel-caption">
+        <h3>Meow</h3>
+        <p>Just Kitten Around</p>
+      </div>
+    </div>
+    <div class="item">
+      <a href="#"><img src="{% static 'homechef/pic8.jpg' %}" style="width: 1537px;height: 500px;"/></a>
+      <div class="carousel-caption">
+        <h3>Meow</h3>
+        <p>Just Kitten Around</p>
+      </div>
+    </div>
+    <div class="item">
+      <a href="#"><img src="{% static 'homechef/pic10.jpg' %}" style="width: 1537px;height: 500px;"/></a>
+      <div class="carousel-caption">
+        <h3>Meow</h3>
+        <p>Just Kitten Around</p>
+      </div>
+    </div>
+  </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
-</html>
+  <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div>
+  <div class="container">
+    <h2 style="text-align: center;font-weight: bold;">Our Popular Dishes</h2> 
+    <div class="row">
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="/w3images/lights.jpg" target="_blank">
+            <img src="{%static 'homechef/biryani.jfif'%}" alt="Lights" style="width:100%">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">Delicious Biryani</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="/w3images/nature.jpg" target="_blank">
+            <img src="{%static 'homechef/starter.jfif'%}" alt="Nature" style="width:100%">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">Beautiful Starter</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <a href="/w3images/fjords.jpg" target="_blank">
+            <img src="{%static 'homechef/food2.jfif'%}" alt="Fjords" style="width:100%">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">Sumptuous Meal</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="background-color: #ffcb00;">
+    <div class="row" style="padding: 40px;">
+        <!-- Info Card with social icons -->
+        <div class="col-md-4" style="float: left;padding: 25px;">
+          <img src="{%static 'homechef/chef-cooking.png'%}" width="350px" height="350px"/>
+        </div>
+      <div class="col-md-4 mt-30">
+          <div class="front">
+            <h1>Hungry?!!</h1>
+              <h3>You are at the right place!</h3>
+              <p>Enjoy your favourite items from your favourite chefs.</p>
+
+          </div>
+        <div class="back">
+          <br><br><br><br><br><br>
+              <p>Enjoy your favourite items from your favourite chefs.</p>
+              <br>
+              <button class="buybutton">Buy now</button>
+          </div>
+        </div>
+        <div class="col-md-4 mt-30">
+          <div class="front">
+            <h3>Want to inspire with your cooking</h3>
+                <h1>Join us</h1>
+                <p>We provide the best online platform for chefs to reach out and earn as a freelancer.</p>
+          </div>
+        <div class="back">
+          <br><br><br><br><br><br>
+              <p>We provide the best online platform for chefs to reach out and earn as a freelancer.</p>
+              <br>
+              <button class="buybutton">Join</button>
+        </div>
+      </div>
+      </div>
+  </div>
+      <!-- Scrolling enabled for longer content -->
+      
+  </div>
+  <div class="container" style="padding: 45px;">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="{%static 'homechef/customers.png'%}" alt="Fjords" style="width:300px;height: 200px;">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">More than 100 satisfied customers</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="{%static 'homechef/orders.png'%}" alt="Nature" style="width:300px;height: 200px;">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">More than 300 orders</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <img src="{%static 'homechef/volunteers.png'%}" alt="Lights" style="width:300px;height: 200px;">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">More than 20 helpers</p>
+            </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="container-fluid" style="background-color: black;">
+    <div class="row" style="padding: 40px;">
+        <!-- Info Card with social icons -->
+        <div class="col-md-4" style="float: left;padding: 25px;">
+          <img src="{%static 'homechef/chef-cooking.png'%}" width="350px" height="350px"/>
+        </div>
+      <div class="col-md-4 mt-30">
+          <div class="front">
+            <h1>Hungry?!!</h1>
+              <h3>You are at the right place!</h3>
+              <p>Enjoy your favourite items from your favourite chefs.</p>
+
+          </div>
+        <div class="back">
+          <br><br><br><br><br><br>
+              <p>Enjoy your favourite items from your favourite chefs.</p>
+              <br>
+              <button class="buybutton">Buy now</button>
+          </div>
+        </div>
+        <div class="col-md-4 mt-30">
+          <div class="front">
+            <h3>Want to inspire with your cooking</h3>
+                <h1>Join us</h1>
+                <p>We provide the best online platform for chefs to reach out and earn as a freelancer.</p>
+          </div>
+        <div class="back">
+          <br><br><br><br><br><br>
+              <p>We provide the best online platform for chefs to reach out and earn as a freelancer.</p>
+              <br>
+              <button class="buybutton">Join</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  <!-- Footer -->
+  <div class="container" style="padding: 45px;">
+    <div class="row">
+      <h1 style="text-align: center;padding: 5px;">What do our customers say?</h1> 
+    </div>
+    <div class="row">
+      <p style="padding-left: 10px;border-left: 5px solid blue;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit.<br> Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+       
+      </div>
+      <div class="row">
+          <p style="padding-right: 10px;border-right: 5px solid #ffcb00;text-align: right;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+      </div>
+      <div class="row">
+        
+          <p style="padding-left: 10px;border-left: 5px solid orangered;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+        
+      </div> 
+    
+     </div>
+  {% endblock %}
+        
