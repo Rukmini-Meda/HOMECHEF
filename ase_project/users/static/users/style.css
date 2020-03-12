@@ -46,8 +46,8 @@ a {
 
 button {
 	border-radius: 20px;
-	border: 1px solid #ffcb00;
-	background-color: #ffcb00;
+	border: 1px solid #0072ff;
+	background-color: #0072ff;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -106,8 +106,7 @@ select{
 	overflow: hidden;
 	width: 768px;
 	max-width: 100%;
-	min-height: 680px;
-	padding: 10px;
+	min-height: 480px;
 }
 
 .form-container {
@@ -169,9 +168,9 @@ select{
 }
 
 .overlay {
-	background: #ffcb00;
-	background: -webkit-linear-gradient(to right, #ffcb00, #ffcb00);
-	background: linear-gradient(to right, #ffcb00, #ffcb00);
+	background: #0072FF;
+	background: -webkit-linear-gradient(to right, #0072FF, #0072FF);
+	background: linear-gradient(to right, #0072FF, #0072FF);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
