@@ -1,4 +1,0 @@
-pip install Pillow
-pip install six
-pip install django-crispy-forms
-pip install django-phonenumber-field[phonenumbers]
