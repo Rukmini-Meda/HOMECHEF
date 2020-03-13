@@ -29,6 +29,7 @@ def register(request):
 		form=UserRegisterForm()
 	return render(request,'users/login_register.html')
 
+# View for login functionality
 def Login(request):
 	if request.method=='POST':
 		username = request.POST.get('username')
