@@ -21,7 +21,7 @@ def register(request):
 			form.save()
 			user = form.save(commit = False)
 			user.is_active = False
-			user.save()
+      user.save()
 			current_site = get_current_site(request)
 			mail_subject = 'Activate your HomeChef account.'
 			message = render_to_string('users/acc_active_email.html', {
@@ -39,12 +39,27 @@ def register(request):
 			
 			first_name = form.cleaned_data.get('first_name')
 			messages.success(request, f'Account created for {first_name}!!! Login to proceed')
-			return redirect('login')
-
+			return redirect('landing')
 	else:
-		form = UserRegisterForm()
-	return render(request, "users/register.html", {'form': form})
+		form=UserRegisterForm()
+	return render(request,'users/login_register.html')
 
+# View for login functionality
+def Login(request):
+	if request.method=='POST':
+		username = request.POST.get('username')
+		password = request.POST.get('password')
+		user = authenticate(request, username=username, password=password)
+		if user is not None:
+			form = login(request,user)
+			user=request.user
+			messages.success(request,f'You are successfully logged in!!')
+      user.save()
+      return redirect('landing')
+    else:
+      messages.info(request,f'Account done, please login')
+  form=AuthenticationForm()
+  return render(request,'users/login_register.html',{'form':form})
 
 def activate(request, uidb64, token):
     try:
