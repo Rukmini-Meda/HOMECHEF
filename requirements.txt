@@ -1,3 +1,4 @@
+django
 Pillow
 six
 django-crispy-forms

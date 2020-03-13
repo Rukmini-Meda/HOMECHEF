@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from profiles.forms import  UserUpdateForm, ProfileUpdateForm
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
@@ -13,36 +13,42 @@ from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
 
-
 def register(request):
-	if request.method == 'POST':
+	if request.method=='POST':
 		form = UserRegisterForm(request.POST)
+		print(request.POST.get('username'))
+		print(request.POST.get('first_name'))
+		print(request.POST.get('last_name'))
+		print(request.POST.get('email'))
+		print(request.POST.get('password1'))
+		print(request.POST.get('password2'))
+		print(form.is_valid())
+		print(form.errors)
 		if form.is_valid():
 			form.save()
-			user = form.save(commit = False)
-			user.is_active = False
-      user.save()
+			user = form.save(commit=False)
+			user.is_active=False
+			user.save()
 			current_site = get_current_site(request)
 			mail_subject = 'Activate your HomeChef account.'
-			message = render_to_string('users/acc_active_email.html', {
+			message = render_to_string('users/acc_active_email.html',{
 				'user': user,
 				'domain': current_site.domain,
-				'uid':urlsafe_base64_encode(force_bytes(user.pk)),
-				'token':account_activation_token.make_token(user),
+				'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+				'token': account_activation_token.make_token(user),
 				})
 			to_email = form.cleaned_data.get('email')
 			email = EmailMessage(
-						mail_subject, message, to=[to_email]
+				mail_subject,message, to=[to_email]
 			)
 			email.send()
-			return HttpResponse('Please confirm your email address to complete the registration')
-			
-			first_name = form.cleaned_data.get('first_name')
-			messages.success(request, f'Account created for {first_name}!!! Login to proceed')
-			return redirect('landing')
+			return HttpResponse('<p>Please confirm your email address to complete the registration</p>')
 	else:
 		form=UserRegisterForm()
 	return render(request,'users/login_register.html')
+		
+
+
 
 # View for login functionality
 def Login(request):
@@ -54,12 +60,13 @@ def Login(request):
 			form = login(request,user)
 			user=request.user
 			messages.success(request,f'You are successfully logged in!!')
-      user.save()
-      return redirect('landing')
-    else:
-      messages.info(request,f'Account done, please login')
-  form=AuthenticationForm()
-  return render(request,'users/login_register.html',{'form':form})
+			user.save()
+			return redirect('landing')
+		else:
+			messages.info(request,f'Account done, please login')
+	form=AuthenticationForm()
+	return render(request,'users/login_register.html')
+  	
 
 def activate(request, uidb64, token):
     try:

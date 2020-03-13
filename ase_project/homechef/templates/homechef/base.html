@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>HOMECHEF</title>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'homechef/landingpage.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+    <body>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">{{message}}</div>
+          {% endfor %}
+        {% endif %}
+      <nav class="navbar navbar-inverse" style="border:0;background-color:#ffcb00;color:black;padding: 10px;margin: 0;border-radius: 0;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'landing' %}"style="color: black;font-weight: bold">HOMECHEF</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active hovst"><a href="{% url 'landing' %}">Home</a></li>
+            <li><a href="#">Buy</a></li>
+            <li><a href="#">Sell</a></li>
+            <li><a href="#">Hire</a></li>
+            <li><a href="#">Volunteer</a></li>
+          </ul>
+      
+          <ul class="nav navbar-nav navbar-right">
+            {% if request.user.is_authenticated %}
+                <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'profile' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span>Profile</a></button></li>
+                <li><button type="button" class="btn" style="background-color: black;margin: 5px;"><a href="{% url 'logout' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></button></li>
+            {% else %}
+                <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'register' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span> Signup</a></button></li>
+                <li><button type="button" class="btn" style="background-color: black;margin: 5px;"><a href="{% url 'login' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-log-in"></span> Login</a></button></li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+      {% block content %}{% endblock %}
+      <footer class="footer">
+        <div class="container">
+            <div class="row">
+            <div class="col-sm-3">
+                <h4 class="title">HOMECHEF</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, sapien elit lacinia mi.</p>
+                <ul class="social-icon">
+                <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                </ul>
+                </div>
+            <div class="col-sm-3">
+                <h4 class="title">COMPANY</h4>
+                <span class="acount-icon">          
+                <a href="#">About Us</a>
+                <a href="#">Team</a>
+                
+              </span>
+                </div>
+            <div class="col-sm-3">
+                <h4 class="title">Category</h4>
+                <div class="category">
+                <a href="#">BUY</a>
+                <a href="#">SELL</a>
+                <a href="#">VOLUNTEER</a>
+                <a href="#">HIRE</a>
+                </div>
+                </div>
+                <!-- <div class="col-sm-3">
+                    <h4 class="title">COMPANY</h4>
+                    <span class="acount-icon">          
+                    <a href="#">About Us</a>
+                    <a href="#">Team</a>
+                    
+                  </span>
+                    </div> -->
+            <div class="col-sm-3">
+                <h4 class="title">Payment Methods</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <ul class="payment">
+                <li><a href="#"><i class="fa fa-cc-amex" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li>            
+                <li><a href="#"><i class="fa fa-paypal" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-cc-visa" aria-hidden="true"></i></a></li>
+                </ul>
+                </div>
+            </div>
+            <hr>
+            
+            <div class="row text-center"> © 2020. Made by Team30, IIITS.</div>
+            </div>
+            
+            
+        </footer>
+    
+  </body>
+    
+  
+</html>
