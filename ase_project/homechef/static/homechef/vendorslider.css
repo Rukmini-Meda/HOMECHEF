@@ -1,0 +1,340 @@
+
+
+.header {
+    overflow: hidden;
+    background-color: #ffcb00;
+    padding: 0.1px 5px;
+  }
+  
+  .header a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 15px; 
+    line-height: 50px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+    font-family:verdana;
+  }
+  
+  
+  .header-right {
+    float: right;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    
+    .header-right {
+      float: none;
+    }
+  }
+  button{
+      margin:20px;
+  }
+
+  .button1 {
+    background-color: white;
+    border: none;
+    color:black;
+    padding: 10px 30px;
+    text-align: center;
+    /* margin: 400px; */
+    
+    font-size: 20px;
+    /* margin: 6px 4px; */
+    cursor: pointer;
+    border-radius: 50px;
+  }
+  .button2 {
+    background-color:black;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    
+    
+    font-size: 20px;
+    /* margin: 6px 4px; */
+    cursor: pointer;
+    border-radius: 50px;
+  }
+
+  .form-main {
+    margin-top: 0;
+  }
+  
+  .form-input-fields {
+   margin-bottom: 0; 
+  }
+  
+  .section-main {
+    margin-top:40px;
+    background-color: lightgrey;
+    padding: 20px 0;
+  }
+  .group-icon {
+    background-color:#fff;
+    border:0; 
+  }
+  .input-search {
+    border:1px solid #fff;
+    padding:20px 40px;
+    font-size:20px;
+    box-shadow:none;  
+  }
+  @media (max-width: 992px) {
+      .pull-left-sm {
+          float: left !important;
+      }
+    
+  }
+  @media (max-width: 767px) {
+    .nofloat-xs {
+        float: none !important;
+    }
+  .btn-submit {
+    margin-top:10px;
+  }
+}
+
+.sidebar {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidebar */
+  }
+  
+  /* The sidebar links */
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .slider-box{
+  height:350px;
+  width:250px;
+  position:relative;
+  background-color:#FFFFFF;
+  border-radius:5px;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+}
+  
+  /* The button used to open the sidebar */
+  .openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    padding: 0px 15px;
+    border: none;
+  }
+  
+  .openbtn:hover {
+    background-color: #444;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s; /* If you want a transition effect */
+    padding: 0px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidebar {padding-top: 5px;}
+    .sidebar a {font-size: 18px;}
+  }
+
+   .rating-star{
+    position: relative;
+    left:50%;
+    right:50%;
+    transform: translate(-75%,0%);
+  }
+  .rating-star > input { display: none; } 
+  .rating-star > label:before { 
+    margin: 5px;
+    font-size:17px;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "\f005";
+  }
+  .rating-star > .half:before { 
+    content: "\f089";
+    position: absolute;
+  }
+  .rating-star > label { 
+    color: #ddd; 
+   float: right; 
+  }
+  .rating-star > input:checked ~ label,
+  .rating-star:not(:checked) > label:hover,
+  .rating-star:not(:checked) > label:hover ~ label { color: #FFD700;  }
+  .rating-star > input:checked + label:hover,
+  .rating-star > input:checked ~ label:hover,
+  .rating-star > label:hover ~ input:checked ~ label,
+  .rating-star > input:checked ~ label:hover ~ label { color: #FFED85;  }  
+
+  .card-img-top
+  {
+    height:150px;
+  }
+  .card-title
+  {
+    padding:10px 25px;
+  }
+  .card-text
+  {
+    padding:0px 25px;
+  }
+  
+  .checked {
+    color: orange;
+  }
+  .star
+  {
+    margin-left:40px;
+  }
+
+  .site-footer
+{
+  background-color:#26272b;
+  padding:20px 20px;
+  font-size:15px;
+  line-height:24px;
+  color: #878c94;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5;
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h3
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+
+.footer-links.inline li
+{
+  display:inline-block
+}
+
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+
+.site-footer .payment{margin:0px;padding:0px;list-style-type:none}
+.site-footer .payment li{list-style-type:none}
+.site-footer .payment li a {
+    text-decoration: none;
+    /* display: inline-block; */
+    color: #fff;
+    float: left;
+    font-size: 25px;
+    padding: 10px 50px;
+}
+
+
+.site-footer .social-icon{padding:0px;margin:0px;}
+.site-footer .social-icon a{display:inline-block;color:#fff;font-size:25px;padding:5px;}
+.site-footer .acount-icon a{display:block;color:#fff;font-size:18px;padding:5px;text-decoration:none;}
+.site-footer .acount-icon .fa{margin-right:25px;}
+
+.site-footer .category a {
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  padding: 5px 20px;
+  margin: 1px;
+  border:0px;
+  margin-top: 6px;
+ 
+  
+}
+
+
+.site-footer .title{text-align: left;color:#fff;font-size:25px;}
+
+.icon {
+  padding: 5px;
+  color: white;
+  min-width: 30px;
+  text-align: center;
+}

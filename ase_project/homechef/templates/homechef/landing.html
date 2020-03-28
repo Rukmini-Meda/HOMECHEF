@@ -1,0 +1,312 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>HOMECHEF</title>
+      <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'homechef/landingpage.css' %}">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+    <body>
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{message.tags}}">{{message}}</div>
+          {% endfor %}
+        {% endif %}
+      <nav class="navbar navbar-inverse" style="border:0;background-color:#ffcb00;color:black;padding: 10px;margin: 0;border-radius: 0;">
+        <div class="container-fluid">
+          <div class="logo" style="float: left;width: 130px"><img src="{% static 'homechef/logo2.png' %}" alt="LOGO" width="50%" height="40%"></div>
+          <div class="navbar-header" style="padding: 10px;">
+            <a class="navbar-brand" href="{% url 'landing' %}"style="color: black;font-weight: bold">HOMECHEF</a>
+          <ul class="nav navbar-nav" >
+            <li><a href="{% url 'Buy' %}" style="color:black;font-weight: bold;">Buy</a></li>
+            <li ><a href="#" style="color:black;font-weight: bold;">Sell</a></li>
+            <li ><a href="#" style="color:black;font-weight: bold;">Hire</a></li>
+            <li ><a href="#" style="color:black;font-weight: bold;">Volunteer</a></li>
+          </ul>
+          </div>
+          <div class="div" style="padding: 10px;">
+            <ul class="nav navbar-nav navbar-right">
+              {% if request.user.is_authenticated %}
+                  <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'profile' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span>Profile</a></button></li>
+                  <li><button type="button" class="btn" style="background-color: black;margin: 5px;"><a href="{% url 'logout' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></button></li>
+              {% else %}
+                  <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'register' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span> Signup</a></button></li>
+                  <li><button type="button" class="btn" style="background-color: black;margin: 5px;"><a href="{% url 'login' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-log-in"></span> Login</a></button></li>
+              {% endif %}
+            </ul>
+          </div>
+          </div>
+          
+      </nav>
+    <div id="carousel-example m-0" class="carousel slide" data-ride="carousel">
+    <!-- <ol class="carousel-indicators">
+      <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example" data-slide-to="1"></li>
+      <li data-target="#carousel-example" data-slide-to="2"></li>
+    </ol> -->
+
+  <div class="carousel-inner">
+    <div class="item active">
+      <a href="#"><img src="{% static 'homechef/pic1.jpeg' %}" style="width: 1537px;height: 550px;"/></a>
+      
+    </div>
+    <div class="item">
+      <a href="#"><img src="{% static 'homechef/pic8.jpg' %}" style="width: 1537px;height: 550px;"/></a>
+      
+    </div>
+    <div class="item">
+      <a href="#"><img src="{% static 'homechef/pic10.jpg' %}" style="width: 1537px;height: 550px;"/></a>
+      
+    </div>
+  </div>
+
+  <!-- <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a> -->
+</div>
+  <div class="container">
+    <h2 style="text-align: center;font-weight: bold;padding:50px;;">Our Popular Dishes</h2> 
+    <div class="row">
+      <div class="col-md-4">
+        <div class="thumbnail" style="border:0px;">
+          <a href="/w3images/lights.jpg" target="_blank">
+            <img src="{%static 'homechef/biryani.jfif'%}" alt="Lights" style="width:100%">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">Delicious Biryani</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail" style="border:0px;">
+          <a href="/w3images/nature.jpg" target="_blank">
+            <img src="{%static 'homechef/starter.jfif'%}" alt="Nature" style="width:100%">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">Tasty Starter</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="thumbnail" style="border:0px;">
+          <a href="/w3images/fjords.jpg" target="_blank">
+            <img src="{%static 'homechef/food2.jfif'%}" alt="Fjords" style="width:100%">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">Sumptuous Meal</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="background-color:#ffcb00;">
+    <div class="row" style="padding: 40px;">
+        <!-- Info Card with social icons -->
+        <div class="col-md-4" style="float: left;padding: 25px;">
+          <img src="{%static 'homechef/chef-cooking.png'%}" width="400px" height="350px" >
+        </div>
+        <div class="flip-class">
+          <div class="row">
+            
+             
+            <div class="info-card">
+                <div class="front" style="padding:5px 25px;">
+                  <h1>Hungry?!!</h1>
+                  <h2>You are at the right place!</h2>
+                  <br>
+                 <p>Homechef brings you the amazing home cooked food</p>
+                </div>
+              <div class="back">
+                <div class="card-details" style="padding-bottom: 50px;">
+                <h3>Enjoy food from your favourite chefs</h3>
+                </div>
+                <div class="text-center" style="color:black;">
+                  <a href="{% url 'Buy' %}">
+                <button type="button" class="btn btn-secondary btn-lg" >Buy food</button>
+                </a>
+                </div>
+              
+              </div>
+            </div>
+          
+            <div class="info-card">
+              <div class="front" style="padding:5px 25px;">
+                <h1></h1>
+                <h2>Become a hometrepreneur</h2>
+                <br>
+               <h4> You can share your amazing food here!!!</h4>
+              </div>
+            <div class="back">
+              <div class="card-details" style="padding-bottom: 50px;">
+              <h3>Make people happy with your delicious recipes</h3>
+              </div>
+              <div class="text-center" style="color:black;">
+              <button type="button" class="btn btn-secondary btn-lg">Sell food</button>
+              </div>
+            
+            </div>
+          </div>
+        </div>
+        </div>
+  </div>
+      <!-- Scrolling enabled for longer content -->
+      
+  </div>
+  <div class="container" style="padding: 60px;">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="thumbnail" style="border:0px;">
+          <img src="{%static 'homechef/customers.png'%}" alt="Fjords" style="width:250px;height: 200px;margin-right:50px;">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">More than 100 satisfied customers</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail" style="border:0px;">
+          <img src="{%static 'homechef/orders.png'%}" alt="Nature" style="width:200px;height: 200px;">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">More than 300 orders</p>
+            </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="thumbnail" style="border:0px;">
+          <img src="{%static 'homechef/volunteers.png'%}" alt="Lights" style="width:220px;height: 200px;margin-left:70px;">
+            <div class="caption">
+              <p style="font-weight: bold;text-align: center;">More than 20 helpers</p>
+            </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <div class="container-fluid" style="background-color:#ffcb00;">
+    <div class="row" style="padding: 40px;">
+        <!-- Info Card with social icons -->
+        <div class="col-md-4" style="float: left;padding: 25px;">
+          <img src="{%static 'homechef/chef-cooking.png'%}" width="400px" height="350px"/>
+        </div>
+        <div class="flip-class">
+          <div class="row">
+        <div class="info-card">
+         
+          <div class="front" style="padding:5px 25px;">
+            <h1>Need a volunteer??</h1>
+            <h2>You are at the right place!</h2>
+            <br>
+           <p>Homechef provides you a platform to hire people</p>
+          </div>
+        <div class="back">
+          <div class="card-details" style="padding-bottom: 50px;">
+          <h3>Hire people</h3>
+          </div>
+          <div class="text-center" style="color:black;">
+          <button type="button" class="btn btn-secondary btn-lg">Need volunteer</button>
+          </div>
+        
+        </div>
+      </div>
+    
+      <div class="info-card">
+        <div class="front" style="padding:5px 25px;">
+          
+          <h2>Want to be employed as a volunteer??</h2>
+          <br>
+         <h4> You can find many opportunities here!!!</h4>
+        </div>
+      <div class="back">
+        <div class="card-details" style="padding-bottom: 50px;">
+        <h3>Make people happy with your delicious recipes</h3>
+        </div>
+        <div class="text-center" style="color:black;">
+        <button type="button" class="btn btn-secondary btn-lg">Be as a volunteer</button>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+      </div>
+    </div>
+  <!-- Footer -->
+  <div class="container" style="padding: 45px;">
+    <div class="row">
+      <h1 style="text-align: center;padding: 5px;">What do our customers say?</h1> 
+    </div>
+    <div class="row">
+      <p style="padding-left: 10px;border-left: 5px solid blue;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit.<br> Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+       
+      </div>
+      <div class="row">
+          <p style="padding-right: 10px;border-right: 5px solid #ffcb00;text-align: right;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+      </div>
+      <div class="row">
+        
+          <p style="padding-left: 10px;border-left: 5px solid orangered;"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br>Non quam dicta sunt consectetur sit iste, minus asperiores incidunt <br>eveniet molestias nulla culpa quisquam assumenda! <br>Laboriosam dolorem facere iusto ea ipsa.</p>
+        
+      </div> 
+    
+     </div>
+     <footer class="footer" >
+      <div class="container" >
+          <div class="row">
+          <div class="col-sm-3">
+              <h4 class="title">HOMECHEF</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, sapien elit lacinia mi.</p>
+              <ul class="social-icon">
+              <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+              <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+              <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+              <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+              <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+              </ul>
+              </div>
+          <div class="col-sm-3">
+              <h4 class="title">COMPANY</h4>
+              <span class="acount-icon">          
+              <a href="{% url 'about' %}">About</a>
+              <a href="#">Team</a>
+              
+            </span>
+              </div>
+          <div class="col-sm-1">
+              <h4 class="title">Category</h4>
+              <div class="category">
+              <a href="#">BUY</a>
+              <a href="#">SELL</a>
+              <a href="#">VOLUNTEER</a>
+              <a href="#">HIRE</a>
+              </div>
+              </div>
+              
+          <div class="col-sm-5">
+              <h4 class="title"style="padding-left:130px;">Payment Methods</h4>
+              <p style="padding-left:130px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <ul class="payment" style="padding-left:90px;">
+              <!-- <li><a href="#"><i class="fa fa-cc-amex" aria-hidden="true"></i></a></li> -->
+              <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li>            
+              <!-- <li><a href="#"><i class="fa fa-paypal" aria-hidden="true"></i></a></li>
+              <li><a href="#"><i class="fa fa-cc-visa" aria-hidden="true"></i></a></li> -->
+              </ul>
+              </div>
+          </div>
+          <hr>
+          
+          <div class="row text-center"> © 2020. Made by Team30, IIITS.</div>
+          </div>
+          
+          
+      </footer> 
+  
+</body>
+  
+
+</html>
