@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'paypal.standard.ipn',
+    'payment',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -138,3 +141,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'homechef302020@gmail.com'
 EMAIL_HOST_PASSWORD = 'django30'
 EMAIL_PORT = 587
+
+PAYPAL_TEST=True
+PAYPAL_RECEIVER_EMAIL='saisrithanya.k18@iiits.in'

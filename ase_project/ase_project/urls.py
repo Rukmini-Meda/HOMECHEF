@@ -21,6 +21,18 @@ from django.contrib.auth import views as auth_views
 from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework import routers
+
+router1=routers.DefaultRouter()
+router1.register('homechef',homechef_views.VendorList)
+
+router2=routers.DefaultRouter()
+router2.register('homechef',homechef_views.FoodItemList)
+
+router3=routers.DefaultRouter()
+router3.register('homechef',homechef_views.IngredientsList)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -36,6 +48,13 @@ urlpatterns = [
     path('food/',homechef_views.food,name='food'),
     path('vendorlist/',homechef_views.vendorlist,name='vendorlist'),
     path('about/',homechef_views.about,name='about'),
+    path('paypal/', include('paypal.standard.ipn.urls')),
+    path('payment/',include('payment.urls',namespace="payment")),
+    path('Vendor1/',include(router1.urls)),
+    path('FoodItem1/',include(router2.urls)),
+    path('Ingredients1/',include(router3.urls)),
+    
+
     url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         user_views.activate, name='activate'),
     path('password-reset/',
