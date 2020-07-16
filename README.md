@@ -6,13 +6,13 @@
     An issue must be created for any feature addition or bug fixation. It should be labelled accordingly. Developers working on a particular issue must create a branch and commit changes in that branch. Further, a pull request from that branch must be made to the master branch of this repository for merging. Following are the steps that have to be strictly followed for contributing to this project
     
 #### 1. Fork the repository :fork_and_knife:
-#### 2. Clone the repository to your local machine
+#### 2. Clone your fork to your local machine
 ```
-git clone https://github.com/Rukmini-Meda/Applied-Software-Engineering-1.git
+git clone https://github.com/<your_username>/HOMECHEF.git
 ```
 #### 3. Setup upstream remote
 ```
-git remote add upstream https://github.com/Rukmini-Meda/Applied-Software-Engineering-1.git
+git remote add upstream https://github.com/Rukmini-Meda/HOMECHEF.git
 ```
 #### 4. Verify remote - upstream URL should refer to this repository and origin should refer to your fork
 ```
