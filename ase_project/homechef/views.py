@@ -1,5 +1,16 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from . import models
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import VendorSerializer
+from .serializers import FoodItemSerializer
+from .serializers import IngredientsSerializer
+from rest_framework import permissions
+from rest_framework.decorators import api_view
+from rest_framework import viewsets
 from django.utils import timezone
 from django.views.generic import DetailView, View
 from django.core.exceptions import ObjectDoesNotExist
@@ -78,6 +89,21 @@ def vendorlist(request,food_id):
 			data=sample
 	print(data.vendor_list())
 	return render(request,'homechef/vendorlist.html',{'data':data})  
+
+
+class VendorList(viewsets.ModelViewSet):
+	
+	queryset=models.Vendor.objects.all()
+	serializer_class=VendorSerializer
+		
+class FoodItemList(viewsets.ModelViewSet):
+	queryset=models.FoodItem.objects.all()
+	serializer_class=FoodItemSerializer
+
+class IngredientsList(viewsets.ModelViewSet):
+	queryset=models.Ingredients.objects.all()
+	serializer_class=IngredientsSerializer
+
 
 @login_required
 def add_to_cart(request, vendor_id, food_id):
@@ -208,3 +234,4 @@ class CheckoutView(View):
 			return redirect("order-summary")
 		
 			
+

@@ -1,58 +1,5 @@
 {% extends 'homechef/base.html' %}
-{% load static %}
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'homechef/base.css' %}"> 
-    <link rel="stylesheet" href="{% static 'homechef/landingpage.css' %}"> 
-    <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
-
-    
-
-    
-  
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #ffcb00;">
-    <a class="navbar-brand font-weight-bold" href="{% url 'landing' %}">HOMECHEF</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'Buy' %}" style="color:black;">Buy</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black;">Sell</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black;">Hire</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black;">Volunteer</a>
-        </li>
-      </ul>
-  
-      <ul class="navbar-nav ml-auto">
-          {% if request.user.is_authenticated %}
-              <li><button type="button" class="btn btn-dark" style="background-color:black;margin: 5px;"><a href="{% url 'profile' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf007;</i>Profile</a></button></li>
-              <li><button type="button" class="btn btn-dark" style="background-color: black;margin: 5px;"><a href="{% url 'logout' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf08b;</i> Logout</a></button></li>
-          {% else %}
-              <li><button type="button" class="btn btn-dark" style="background-color:black;margin: 5px;"><a href="{% url 'register' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf007;</i> Signup</a></button></li>
-              <li><button type="button" class="btn btn-dark" style="background-color: black;margin: 5px;"><a href="{% url 'login' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf090;</i> Login</a></button></li>
-          {% endif %}
-        </ul>
-    </div>
-  </nav>-->
-    
+{% load static %}   
 {% block content %}
   <div class="description">
       <img src="{% static 'homechef/images/profilepic4.png' %}" class="rounded float-left" style="padding: 25px;">
@@ -91,6 +38,7 @@
     <div class="foodname" >
       <h1>{{food.itemname}}</h1>
     </div>
+
         <div class="ingredients">
       <h3>Ingredients</h3>
       <ul>
