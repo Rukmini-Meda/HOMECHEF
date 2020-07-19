@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'payment',
     'rest_framework',
+    'django_countries'
 ]
 
 MIDDLEWARE = [
