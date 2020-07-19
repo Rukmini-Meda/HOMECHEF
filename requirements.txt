@@ -4,3 +4,5 @@ six
 django-crispy-forms
 django-phonenumber-field[phonenumbers]
 django-countries
+django-paypal
+djangorestframework
