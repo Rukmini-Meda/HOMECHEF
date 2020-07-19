@@ -1,0 +1,56 @@
+{% extends 'homechef/base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'homechef/css/selling1.css' %}">
+  <section class="bg-dark text-center"> 
+  <div class="container2">
+    <h3 class="text1" >SELL YOUR FOOD ONLINE</h3>
+    <br>
+    
+    <h4 class="text2">A platform customized exactly for your business</h4>
+  <br>
+  
+  <div class="sellbutton">
+    
+  <button type="button" class="btn btn-light" ><a href="{ % url 'sellerprofile' % }">Start Selling now</a></button>
+  </a>
+  </div>
+  </div>
+  </section>
+
+  <section class="bg-white text-center"> 
+
+  <div class=container1>
+
+  <h3>What Can You Do?</h3>
+  <br>
+  <div class="row ">
+  <div class="col">
+  <img src="{% static 'homechef/images/sellimg1.png' %}">
+  <p>Sell your products online</p>
+  </div>
+  <div class="col">
+  <img src="{% static 'homechef/images/sellimg3.png' %}">
+  <p>Promote your products online</p>
+  </div>
+  <div class="col">
+  <img src="{% static 'homechef/images/sellimg2.png' %}">
+  <p>Deliver your products</p>
+  </div>
+  </div>
+  </div>
+
+  </section>
+  <br>
+  <div class="container">
+
+  <img src= "{% static 'homechef/images/sell2.jpg' %}" style="width:100%;" class="img-responsive">
+
+  <div class="carousel-caption" >
+    <h1>Trusted,Loved And Recommended.</h1>
+  </div>
+
+  </div>
+  <br>
+  <br>
+{% endblock %}

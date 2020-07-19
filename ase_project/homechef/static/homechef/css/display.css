@@ -1,4 +1,4 @@
-/* .header {
+.header {
     overflow: hidden;
     background-color: #ffcb00;
     padding: 0.1px 5px;
@@ -36,8 +36,8 @@
     .header-right {
       float: none;
     }
-  } */
-  /* button{
+  }
+  button{
       margin:20px;
   }
 
@@ -47,10 +47,10 @@
     color:black;
     padding: 10px 30px;
     text-align: center;
-    
+    /* margin: 400px; */
     
     font-size: 20px;
-    
+    /* margin: 6px 4px; */
     cursor: pointer;
     border-radius: 50px;
   }
@@ -63,10 +63,10 @@
     
     
     font-size: 20px;
-    
+    /* margin: 6px 4px; */
     cursor: pointer;
     border-radius: 50px;
-  } */
+  }
 .name
 {
   padding:50px;
@@ -148,10 +148,10 @@ display:inline-block;
 padding: 0px 90px;
 
 }
-/* .logo
+.logo
 { position:absolute;
   display:inline-block;
   padding-top:0px;
   margin-bottom:0px;
   margin-top:2px;
-}   */
+}  

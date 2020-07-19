@@ -1,0 +1,76 @@
+{% extends 'homechef/base.html' %}
+{% load static %}
+{% block content %}
+  <link rel="stylesheet" href="{% static 'homechef/css/bevolunteer.css' %}"> 
+  
+        
+      
+          
+  <br>
+    <div class="container">
+      <section class="text-center">
+          <h2>Transforming the way people work</h2>
+    </section>
+        <br>
+  <img src="{% static 'homechef/images/volunteerpic5.png' %}" style="width:100%;"class="img-responsive" >
+            
+    
+    </div>
+
+
+  <br>
+  <br>
+  <br>
+  <section class="bg-dark text-center">
+  <div class="container">
+  <br>
+  <h3 style="color:white;">Connect with our volunteers</h3>
+  <br>
+  <p style="color:silver;font-size:20px;">We have many talented people who use this platform to find work in
+  their local area.Pick up available shifts that match your unique skills and fit your busy schedule.We welcome all the 
+  interested people from various backgrounds and different work experience levels.</p>
+  <br>
+  <div class="row">
+  <div class="col">
+      <img src="{% static 'homechef/images/human1.jpg' %}"style="height:200px;">
+      <p style="color:white">Nandu</p>
+  </div>
+  <div class="col">
+      <img src="{% static 'homechef/images/human2.jpg' %}"style="height:200px;">
+      <p style="color:white">Suma</p>
+  </div>
+  <div class="col">
+      <img src="{% static 'homechef/images/human3.jpg' %}"style="height:200px;">
+      <p style="color:white">Ramya</p>
+  </div>
+  </div>
+
+  <br>
+  <br>
+  </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <section class="text-center">
+  <div>
+  <div>
+  <h4>Join Homechef today</h4>
+  <h5>Become a volunteer and start your job now!!!</h6>
+  </div>
+  <br>
+  <div>
+  <a href="{% url 'Volunteerform' %}">
+  <button type="button" class="btn btn-warning">Work this way</button>
+  </a>
+  </div>
+  </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+{% endblock %}
+  
+  

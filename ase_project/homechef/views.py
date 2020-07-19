@@ -21,6 +21,15 @@ def Vendor(request):
 	data=models.Vendor.objects.all()
 	return render(request,'homechef/vendor.html',{'data':data})
 
+def Selling1(request):
+	return render(request,'homechef/selling1.html')
+
+def Bevolunteer(request):
+	return render(request,'homechef/bevolunteer.html')
+
+def Volunteerform(request):
+	return render(request,'homechef/index.html')
+
 def search(request):
 	if request.method=='POST':
 		name_search=request.POST.get('q')

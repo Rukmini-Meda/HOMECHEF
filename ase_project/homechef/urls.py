@@ -12,5 +12,8 @@ urlpatterns = [
     path('remove-from-cart/<vendor_id>/<food_id>/',views.remove_from_cart,name="remove-from-cart"),
     path('remove-single-item-from-cart/<vendor_id>/<food_id>/',views.remove_single_item_from_cart,name="remove-single-item-from-cart"),
     path('order-summary/',views.OrderSummaryView.as_view(),name="order-summary"),
-    path('checkout/',views.CheckoutView.as_view(),name="checkout")
+    path('checkout/',views.CheckoutView.as_view(),name="checkout"),
+    path('bevolunteer/',views.Bevolunteer,name="bevolunteer"),
+    path('Volunteerform/',views.Volunteerform,name="Volunteerform"),
+    path('selling1/',views.Selling1,name="selling1")
 ]
