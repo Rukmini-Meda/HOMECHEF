@@ -1,6 +1,6 @@
-
+{% extends 'homechef/base.html' %}
 {% load static %}
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'homechef/base.css' %}"> 
-    <!-- <link rel="stylesheet" href="{% static 'homechef/landingpage.css' %}">  -->
-    <!-- <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="{% static 'homechef/landingpage.css' %}"> 
+    <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
     
 
@@ -51,124 +51,221 @@
           {% endif %}
         </ul>
     </div>
-  </nav>
-    <link rel="stylesheet" href="{% static 'homechef/product.css' %}">
-    <div class="description">
-        <img src="{% static 'homechef/profilepic4.png' %}" class="rounded float-left">
-        <div class="name">
-          <h3 class="text-left">{{vendor.name}}</h3>
-          <p>{{vendor.email}}</p>
-          <p>{{vendor.phone}}</p>
-        </div>
-         <div class="experience">
-           <h3>Category</h3>
-           <p>{{vendor.description}}</p>
+  </nav>-->
+    
+{% block content %}
+  <div class="description">
+      <img src="{% static 'homechef/images/profilepic4.png' %}" class="rounded float-left" style="padding: 25px;">
+      <div class="name">
+        <h3 class="text-left">{{vendor.name}}</h3>
+        <p>{{vendor.email}}</p>
+        <p>{{vendor.phone}}</p>
+      </div>
+        <div class="experience">
+          <h3>Category</h3>
+          <p>{{vendor.description}}</p>
+      
+      </div>
+      <div class="star">
+        <h3>Rating</h3>
+        {% with ""|center:vendor.rating as range %}
+          {% for i in range %}
+              <span class="fa fa-star checked"></span>
+          {%endfor %}
+        {% endwith %}
+      </div>
+      <div class="address">
+          <h3>Address</h3>
+          <p>{{vendor.address}}</p>
         
         </div>
-        <div class="star">
-          <h3>Rating</h3>
-          {% with ""|center:vendor.rating as range %}
-            {% for i in range %}
-                <span class="fa fa-star checked"></span>
-            {%endfor %}
-          {% endwith %}
+        <div class="timings">
+          <h3>Timings</h3>
+          <p>{{vendor.timings}}</p>
+        
         </div>
-        <div class="address">
-            <h3>Address</h3>
-            <p>{{vendor.address}}</p>
-         
-         </div>
-         <div class="timings">
-            <h3>Timings</h3>
-            <p>{{vendor.timings}}</p>
-         
-         </div>
-      
-    </div>
-    </nav>
-     <div class="container">
-      <div class="foodname" >
-        <h1>{{food.itemname}}</h1>
-     </div>
-         <div class="ingredients">
-        <h3>Ingredients</h3>
-        <ul>
-            {% for item in food.ingred_lis %}
-              <li>{{item.name}}</li>
-            {% endfor %}
-        </ul>
-         </div>
-        <div class="picture" style="width: 650px;float: right;">
-            <img src="{% static 'homechef/food_img2.jpg' %}" class="rounded float-right" style="width:45%">
-        </div>
-        <div>
-            <p>{{food.description}}</p>
-        </div>
-    </div>
-    <div class="text-center">
-        <button type="button" class="btn btn-secondary btn-lg">Buy now</button>
-        <button type="button" class="btn btn-secondary btn-lg">Add to cart</button>
-    </div>
-    <footer class="site-footer">
-        <div class="container">
-          <div class="row">
-             <div class="col-sm-12 col-md-4">
-             <h4 class="title">HOMECHEF</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, 
-                      sapien elit lacinia mi.</p>
-                      <ul class="social-icon">
-                        <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                        <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                        <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                        <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                        <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
-                        </ul>
-            </div>
     
-            <div class="col-xs-6 col-md-3" >
-              <h3 class="title">COMPANY</h3>
-              <span class="acount-icon" >          
-                <a href="{% url 'about' %}">About</a>
-                <a href="#">Team</a>
+  </div>
+  <!-- </nav> -->
+    <!---<div class="container">
+    <div class="foodname" >
+      <h1>{{food.itemname}}</h1>
+    </div>
+        <div class="ingredients">
+      <h3>Ingredients</h3>
+      <ul>
+          {% for item in food.ingred_lis %}
+            <li>{{item.name}}</li>
+          {% endfor %}
+      </ul>
+        </div>
+      <div class="picture" style="width: 650px;float: right;">
+          <img src="{% static 'homechef/food_img2.jpg' %}" class="rounded float-right" style="width:45%">
+      </div>
+      <div>
+          <p>{{food.description}}</p>
+      </div>
+  </div>
+  <div class="text-center">
+      <button type="button" class="btn btn-secondary btn-lg">Buy now</button>
+      <button type="button" class="btn btn-secondary btn-lg">Add to cart</button>
+  </div>
+    -->
+      <main class="mt-5 pt-4">
+        <div class="container dark-grey-text mt-5">
+    
+          <!--Grid row-->
+          <div class="row wow fadeIn">
+    
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+    
+              <img src="{% static 'homechef/images/food_img2.jpg' %}" class="img-fluid" alt="">
+    
+            </div>
+            <!--Grid column-->
+    
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+    
+              <!--Content-->
+              <div class="p-4">
+    
+                <div class="mb-3">
+                  <h1><h1>{{food.itemname}}</h1></h1>
+                  <a href="">
+                    <span class="badge purple mr-1">Category 2</span>
+                  </a>
+                  <a href="">
+                    <span class="badge blue mr-1">New</span>
+                  </a>
+                  <a href="">
+                    <span class="badge red mr-1">Bestseller</span>
+                  </a>
+                </div>
+    
+                <p class="lead">
+                  
+                  <span>
+                    <h4 class="font-weight-bold blue-text">
+                      <strong>
+                         Rs.
+                         {% if food.discount_price %}
+                         <span class="mr-1">
+                          <del>{{ food.price }}</del>
+                        </span>
+                        <span>{{ food.discount_price }}</span>
+                         {% else %}
+                         <span>{{ food.price }}</span>
+                         {% endif %}
+                      </strong>
+                    </h4>
+                  </span>
+                </p>
+                <div>
+                  <h3 class="lead font-weight-bold">Ingredients</h3>
+                  <ul>
+                      {% for item in food.ingred_lis %}
+                        <li>{{item.name}}</li>
+                      {% endfor %}
+                  </ul>
+                    </div>
+                <h3 class="lead font-weight-bold">Description</h3>
+    
+                <p>{{food.description}}</p>
                 
-              </span>
-            </div>
+                <!-- <div style="display: inline;"> -->
+                  <div class="m-4">
+                    <a href="{% url 'add-to-cart' vendor.id food.id %}">
+                      <button class="btn btn-primary btn-md my-0 p" type="submit">Add to cart
+                        <i class="fa fa-shopping-cart ml-1"></i>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="m-4">
+                    <a href="{% url 'remove-from-cart' vendor.id food.id %}">
+                      <button class="btn btn-primary btn-md my-0 p" type="submit">Remove from cart
+                        <i class="fa fa-shopping-cart ml-1"></i>
+                      </button>
+                    </a>
+                  </div>
+                <!-- </div> -->
+                </div>
+                
+              <!--Content-->
     
-            <div class="col-xs-6 col-md-1">
-              <h4 class="title">CATEGORY</h4>
-              <div class="category">
-                <a href="#">BUY</a>
-                <a href="#">SELL</a>
-                <a href="#">VOLUNTEER</a>
-                <a href="#">HIRE</a>
-                </div>
             </div>
+            <!--Grid column-->
+    
+          </div>
+          <!--Grid row-->
+    
+          <hr>
+    
           
-            <div class="col-sm-4 col-md-4">
-              <h4 class="title" style="padding-left:130px;">Payment Methods</h4>
-              <p style="padding-left:130px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-              <ul class="payment">
-              
-              <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true" style="padding-left: 80px;"></i></a></li>            
-              
-              </ul>
-            </div> 
+        </div>
+  </main>
+{% endblock %}
+        <!-- <footer class="site-footer">
+          <div class="container">
+            <div class="row">
+               <div class="col-sm-12 col-md-4">
+               <h4 class="title">HOMECHEF</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, 
+                        sapien elit lacinia mi.</p>
+                        <ul class="social-icon">
+                          <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                          <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                          <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                          <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                          <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                          </ul>
+              </div>
+      
+              <div class="col-xs-6 col-md-3" >
+                <h3 class="title">COMPANY</h3>
+                <span class="acount-icon" >          
+                  <a href="{% url 'about' %}">About</a>
+                  <a href="#">Team</a>
+                  
+                </span>
+              </div>
+      
+              <div class="col-xs-6 col-md-1">
+                <h4 class="title">CATEGORY</h4>
+                <div class="category">
+                  <a href="#">BUY</a>
+                  <a href="#">SELL</a>
+                  <a href="#">VOLUNTEER</a>
+                  <a href="#">HIRE</a>
+                  </div>
+              </div>
             
-            <div class="container"><hr>
-              <div class="row">
+              <div class="col-sm-4 col-md-4">
+                <h4 class="title" style="padding-left:130px;">Payment Methods</h4>
+                <p style="padding-left:130px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <ul class="payment">
+                
+                <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true" style="padding-left: 80px;"></i></a></li>            
+                
+                </ul>
+              </div> 
               
-                <div class="col-md-8 col-sm-6 col-xs-12" >
+              <div class="container"><hr>
+                <div class="row">
+                
+                  <div class="col-md-8 col-sm-6 col-xs-12" >
+                   
+                    <p class="footer-copyright text-center py-3" style="padding-left: 300px;">Copyright &copy; 2020. Made by Team30 .IIITS
                  
-                  <p class="footer-copyright text-center py-3" style="padding-left: 300px;">Copyright &copy; 2020. Made by Team30 .IIITS
-               
-                  </p>
-                </div>
-              
-            </div>
+                    </p>
+                  </div>
+                
+              </div>
+              </div>
             </div>
           </div>
-        </div>
     </footer>
     </body>
     </html>
-  
+   -->

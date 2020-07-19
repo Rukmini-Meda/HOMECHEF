@@ -1,1 +1,4 @@
-./ase_project/myenv
+myenv
+ase_project/.vscode
+.idea
+ase_project/db.sqlite3

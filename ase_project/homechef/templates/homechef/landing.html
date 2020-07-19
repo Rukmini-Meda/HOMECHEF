@@ -5,7 +5,7 @@
       <title>HOMECHEF</title>
       <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="{% static 'homechef/landingpage.css' %}">
+  <link rel="stylesheet" href="{% static 'homechef/css/landingpage.css' %}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -18,7 +18,7 @@
         {% endif %}
       <nav class="navbar navbar-inverse" style="border:0;background-color:#ffcb00;color:black;padding: 10px;margin: 0;border-radius: 0;">
         <div class="container-fluid">
-          <div class="logo" style="float: left;width: 130px"><img src="{% static 'homechef/logo2.png' %}" alt="LOGO" width="50%" height="40%"></div>
+          <div class="logo" style="float: left;width: 130px"><img src="{% static 'homechef/images/logo2.png' %}" alt="LOGO" width="50%" height="40%"></div>
           <div class="navbar-header" style="padding: 10px;">
             <a class="navbar-brand" href="{% url 'landing' %}"style="color: black;font-weight: bold">HOMECHEF</a>
           <ul class="nav navbar-nav" >
@@ -32,6 +32,7 @@
             <ul class="nav navbar-nav navbar-right">
               {% if request.user.is_authenticated %}
                   <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'profile' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span>Profile</a></button></li>
+                  
                   <li><button type="button" class="btn" style="background-color: black;margin: 5px;"><a href="{% url 'logout' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></button></li>
               {% else %}
                   <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'register' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span> Signup</a></button></li>
@@ -51,15 +52,15 @@
 
   <div class="carousel-inner">
     <div class="item active">
-      <a href="#"><img src="{% static 'homechef/pic1.jpeg' %}" style="width: 1537px;height: 550px;"/></a>
+      <a href="#"><img src="{% static 'homechef/images/pic1.jpeg' %}" style="width: 1537px;height: 550px;"/></a>
       
     </div>
     <div class="item">
-      <a href="#"><img src="{% static 'homechef/pic8.jpg' %}" style="width: 1537px;height: 550px;"/></a>
+      <a href="#"><img src="{% static 'homechef/images/pic8.jpg' %}" style="width: 1537px;height: 550px;"/></a>
       
     </div>
     <div class="item">
-      <a href="#"><img src="{% static 'homechef/pic10.jpg' %}" style="width: 1537px;height: 550px;"/></a>
+      <a href="#"><img src="{% static 'homechef/images/pic10.jpg' %}" style="width: 1537px;height: 550px;"/></a>
       
     </div>
   </div>
@@ -77,7 +78,7 @@
       <div class="col-md-4">
         <div class="thumbnail" style="border:0px;">
           <a href="/w3images/lights.jpg" target="_blank">
-            <img src="{%static 'homechef/biryani.jfif'%}" alt="Lights" style="width:100%">
+            <img src="{%static 'homechef/images/biryani.jfif'%}" alt="Lights" style="width:100%">
             <div class="caption">
               <p style="font-weight: bold;text-align: center;">Delicious Biryani</p>
             </div>
@@ -87,7 +88,7 @@
       <div class="col-md-4">
         <div class="thumbnail" style="border:0px;">
           <a href="/w3images/nature.jpg" target="_blank">
-            <img src="{%static 'homechef/starter.jfif'%}" alt="Nature" style="width:100%">
+            <img src="{%static 'homechef/images/starter.jfif'%}" alt="Nature" style="width:100%">
             <div class="caption">
               <p style="font-weight: bold;text-align: center;">Tasty Starter</p>
             </div>
@@ -97,7 +98,7 @@
       <div class="col-md-4">
         <div class="thumbnail" style="border:0px;">
           <a href="/w3images/fjords.jpg" target="_blank">
-            <img src="{%static 'homechef/food2.jfif'%}" alt="Fjords" style="width:100%">
+            <img src="{%static 'homechef/images/food2.jfif'%}" alt="Fjords" style="width:100%">
             <div class="caption">
               <p style="font-weight: bold;text-align: center;">Sumptuous Meal</p>
             </div>
@@ -110,7 +111,7 @@
     <div class="row" style="padding: 40px;">
         <!-- Info Card with social icons -->
         <div class="col-md-4" style="float: left;padding: 25px;">
-          <img src="{%static 'homechef/chef-cooking.png'%}" width="400px" height="350px" >
+          <img src="{%static 'homechef/images/chef-cooking.png'%}" width="400px" height="350px" >
         </div>
         <div class="flip-class">
           <div class="row">
@@ -163,7 +164,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="thumbnail" style="border:0px;">
-          <img src="{%static 'homechef/customers.png'%}" alt="Fjords" style="width:250px;height: 200px;margin-right:50px;">
+          <img src="{%static 'homechef/images/customers.png'%}" alt="Fjords" style="width:250px;height: 200px;margin-right:50px;">
             <div class="caption">
               <p style="font-weight: bold;text-align: center;">More than 100 satisfied customers</p>
             </div>
@@ -171,7 +172,7 @@
       </div>
       <div class="col-md-3">
         <div class="thumbnail" style="border:0px;">
-          <img src="{%static 'homechef/orders.png'%}" alt="Nature" style="width:200px;height: 200px;">
+          <img src="{%static 'homechef/images/orders.png'%}" alt="Nature" style="width:200px;height: 200px;">
             <div class="caption">
               <p style="font-weight: bold;text-align: center;">More than 300 orders</p>
             </div>
@@ -179,7 +180,7 @@
       </div>
       <div class="col-md-3">
         <div class="thumbnail" style="border:0px;">
-          <img src="{%static 'homechef/volunteers.png'%}" alt="Lights" style="width:220px;height: 200px;margin-left:70px;">
+          <img src="{%static 'homechef/images/volunteers.png'%}" alt="Lights" style="width:220px;height: 200px;margin-left:70px;">
             <div class="caption">
               <p style="font-weight: bold;text-align: center;">More than 20 helpers</p>
             </div>
@@ -191,7 +192,7 @@
     <div class="row" style="padding: 40px;">
         <!-- Info Card with social icons -->
         <div class="col-md-4" style="float: left;padding: 25px;">
-          <img src="{%static 'homechef/chef-cooking.png'%}" width="400px" height="350px"/>
+          <img src="{%static 'homechef/images/chef-cooking.png'%}" width="400px" height="350px"/>
         </div>
         <div class="flip-class">
           <div class="row">

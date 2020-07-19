@@ -1,76 +1,164 @@
-
+{% extends 'homechef/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'homechef/vendorslider.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'homechef/landingpage.css' %}">  -->
-    <!-- <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet"> -->
+{% block content %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'landing' %}"><h5>Home</h5><span class="sr-only">(current)</span></a>
+      </li>&nbsp&nbsp&nbsp&nbsp
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'Vendor' %}"><h5>Vendor</h5></a>
+      </li>&nbsp&nbsp&nbsp&nbsp
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'food' %}"><h5>Food</h5></a>
+      </li>
+    </ul>
+  <!-- </div> -->
+</nav><br>
 
-    
+<div class="container-fluid">
+  <div class="h2">
+  <p class="text-center">Recommended vendors for you</p>
+</div>
+    <br>
+  <div class="row">
+    <div class="col mb-4">
+      <div id="inam" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+              <div class="container">
+                <!-- <div class="row"> -->
+                  <div class="row row-cols-1 row-cols-md-5">
+                    <div class="col mb-4">
+                      <div class="thumbnail ">
+                        <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <div class="caption">
+                        <h5 class="text-dark">Suma</h5>
+                        </div>
+                    
+                        </div> 
+                      <!-- </div> -->
+                    </div>
+                  
+                    <div class="col mb-4">
+                      <div class="thumbnail ">
+                        <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <div class="caption">
+                        <h5 class="text-dark">Thanya</h5>
+                        </div>
+                    
+                        </div> 
+                      <!-- </div> -->
+                    </div>
+                    <div class="col mb-4">
+                      <div class="thumbnail ">
+                        <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <div class="caption">
+                        <h5 class="text-dark">Ramya</h5>
+                        </div>
+                    
+                        </div> 
+                      <!-- </div> -->
+                    </div>
+                    <div class="col mb-4">
+                      <div class="thumbnail ">
+                        <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <div class="caption">
+                        <h5 class="text-dark">Divya</h5>
+                        </div>
+                    
+                        </div> 
+                      <!-- </div> -->
+                    </div>
+                    <div class="col mb-4">
+                      <div class="thumbnail ">
+                        <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <div class="caption">
+                        <h5 class="text-dark">Navya</h5>
+                        </div>
+                    
+                        </div> 
+                      <!-- </div> -->
+                    </div>
+                </div>
+              </div>
+          </div>
 
-    
-  
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffcb00;">
-    <a class="navbar-brand font-weight-bold" href="{% url 'landing' %}">HOMECHEF</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black;">Sell</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black;">Hire</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:black;">Volunteer</a>
-        </li>
-      </ul>
-  
-      <ul class="navbar-nav ml-auto">
-          {% if request.user.is_authenticated %}
-              <li><button type="button" class="btn btn-dark" style="background-color:black;margin: 5px;"><a href="{% url 'profile' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf007;</i>Profile</a></button></li>
-              <li><button type="button" class="btn btn-dark" style="background-color: black;margin: 5px;"><a href="{% url 'logout' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf08b;</i> Logout</a></button></li>
-          {% else %}
-              <li><button type="button" class="btn btn-dark" style="background-color:black;margin: 5px;"><a href="{% url 'register' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf007;</i> Signup</a></button></li>
-              <li><button type="button" class="btn btn-dark" style="background-color: black;margin: 5px;"><a href="{% url 'login' %}" style="color: white;text-decoration: none;"><i style="font-size:16px" class="fa">&#xf090;</i> Login</a></button></li>
-          {% endif %}
-        </ul>
+          <div class="carousel-item">
+            <div class="container">
+              <!-- <div class="row"> -->
+                <div class="row row-cols-1 row-cols-md-5">
+                  <div class="col mb-4">
+                    <div class="thumbnail ">
+                      <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                      <div class="caption">
+                      <h5 class="text-dark">Thnaya</h5>
+                      </div>
+                  
+                      </div> 
+                    <!-- </div> -->
+                  </div>
+                
+                  <div class="col mb-4">
+                    <div class="thumbnail ">
+                      <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                      <div class="caption">
+                      <h5 class="text-dark">Thanya</h5>
+                      </div>
+                  
+                      </div> 
+                    <!-- </div> -->
+                  </div>
+                  <div class="col mb-4">
+                    <div class="thumbnail ">
+                      <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                      <div class="caption">
+                      <h5 class="text-dark">Thanya</h5>
+                      </div>
+                  
+                      </div> 
+                    <!-- </div> -->
+                  </div>
+                  <div class="col mb-4">
+                    <div class="thumbnail ">
+                      <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                      <div class="caption">
+                      <h5 class="text-dark">Thanya</h5>
+                      </div>
+                  
+                      </div> 
+                    <!-- </div> -->
+                  </div>
+                  <div class="col mb-4">
+                    <div class="thumbnail ">
+                      <img src="  {% static 'homechef/images/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                      <div class="caption">
+                      <h5 class="text-dark">Thanya</h5>
+                      </div>
+                  
+                      </div> 
+                    <!-- </div> -->
+                  </div>
+              </div>
+            </div>
+        </div>
+          
+        </div>
+        <!-- <p>hello</p> -->
+        <a href="#inam" class="carousel-control-prev" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <!-- <p>hi</p> -->
+        <a href="#inam" class="carousel-control-next" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
     </div>
-  </nav>
-  
-<!-- <link rel="stylesheet" href="  {% static 'users/vendorslider.css' %}"> -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="{% url 'landing' %}"><h5>Home</h5><span class="sr-only">(current)</span></a>
-        </li>&nbsp&nbsp&nbsp&nbsp
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'Vendor' %}"><h5>Vendor</h5></a>
-        </li>&nbsp&nbsp&nbsp&nbsp
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'food' %}"><h5>Food</h5></a>
-        </li>
-      </ul>
-    <!-- </div> -->
-  </nav><br>
-  
+  </div>
   <div class="container-fluid">
     <div class="h2">
-    <p class="text-center">Recommended vendors for you</p>
+    <p class="text-center">Recommended Food for you</p>
   </div>
       <br>
     <div class="row">
@@ -83,53 +171,59 @@
                     <div class="row row-cols-1 row-cols-md-5">
                       <div class="col mb-4">
                         <div class="thumbnail ">
-                          <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                          <img src="  {% static 'homechef/images/food_img5.jpg' %}" class="img-thumbnail"  alt="img4">
                           <div class="caption">
-                          <h5 class="text-dark">Suma</h5>
+                          <h5 class="text-dark">Milk shakes</h5>
                           </div>
-                      
-                          </div> 
+                          
+                          </div>                            
+                          
                         <!-- </div> -->
                       </div>
                     
                       <div class="col mb-4">
                         <div class="thumbnail ">
-                          <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                          <img src="  {% static 'homechef/images/food_img1.jpg' %}" class="img-thumbnail" alt="img4">
                           <div class="caption">
-                          <h5 class="text-dark">Thanya</h5>
+                
+                          <h5 class="text-dark">Milk shakes</h5>
                           </div>
-                      
-                          </div> 
+                        
+                          </div>                            
+                          
                         <!-- </div> -->
                       </div>
                       <div class="col mb-4">
                         <div class="thumbnail ">
-                          <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                          <img src="  {% static 'homechef/images/food_img2.jpg' %}" class="img-thumbnail"  alt="img4">
                           <div class="caption">
-                          <h5 class="text-dark">Ramya</h5>
+                          <h5 class="text-dark">Milk shakes</h5>
                           </div>
-                      
-                          </div> 
+                        
+                          </div>                            
+                          
                         <!-- </div> -->
                       </div>
                       <div class="col mb-4">
                         <div class="thumbnail ">
-                          <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                          <img src="  {% static 'homechef/images/food_img3.jpg' %}" class="img-thumbnail"  alt="img4">
                           <div class="caption">
-                          <h5 class="text-dark">Divya</h5>
+                          <h5 class="text-dark">Milk shakes</h5>
                           </div>
-                      
-                          </div> 
+                          
+                          </div>                            
+                          
                         <!-- </div> -->
                       </div>
                       <div class="col mb-4">
                         <div class="thumbnail ">
-                          <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                          <img src="  {% static 'homechef/images/food_img4.jpg' %}" class="img-thumbnail"  alt="img4">
                           <div class="caption">
-                          <h5 class="text-dark">Navya</h5>
+                          <h5 class="text-dark">Milk shakes</h5>
                           </div>
                       
-                          </div> 
+                          </div>                            
+                          
                         <!-- </div> -->
                       </div>
                   </div>
@@ -142,9 +236,9 @@
                   <div class="row row-cols-1 row-cols-md-5">
                     <div class="col mb-4">
                       <div class="thumbnail ">
-                        <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <img src="  {% static 'homechef/images/food_img1.jpg' %}" class="img-thumbnail"  alt="img4">
                         <div class="caption">
-                        <h5 class="text-dark">Thnaya</h5>
+                        <h5 class="text-dark">Milk shakes</h5>
                         </div>
                     
                         </div> 
@@ -153,9 +247,9 @@
                   
                     <div class="col mb-4">
                       <div class="thumbnail ">
-                        <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <img src="  {% static 'homechef/images/food_img2.jpg' %}" class="img-thumbnail"  alt="img4">
                         <div class="caption">
-                        <h5 class="text-dark">Thanya</h5>
+                        <h5 class="text-dark">Milk shakes</h5>
                         </div>
                     
                         </div> 
@@ -163,9 +257,9 @@
                     </div>
                     <div class="col mb-4">
                       <div class="thumbnail ">
-                        <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <img src="  {% static 'homechef/images/food_img3.jpg' %}" class="img-thumbnail"  alt="img4">
                         <div class="caption">
-                        <h5 class="text-dark">Thanya</h5>
+                        <h5 class="text-dark">Milk shakes</h5>
                         </div>
                     
                         </div> 
@@ -173,9 +267,9 @@
                     </div>
                     <div class="col mb-4">
                       <div class="thumbnail ">
-                        <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <img src="  {% static 'homechef/images/food_img4.jpg' %}" class="img-thumbnail"  alt="img4">
                         <div class="caption">
-                        <h5 class="text-dark">Thanya</h5>
+                        <h5 class="text-dark">Milk shakes</h5>
                         </div>
                     
                         </div> 
@@ -183,9 +277,9 @@
                     </div>
                     <div class="col mb-4">
                       <div class="thumbnail ">
-                        <img src="  {% static 'homechef/girl_img.jpg' %}" class="img-thumbnail"  alt="img4">
+                        <img src="  {% static 'homechef/images/food_img5.jpg' %}" class="img-thumbnail"  alt="img4">
                         <div class="caption">
-                        <h5 class="text-dark">Thanya</h5>
+                        <h5 class="text-dark">Milk shakes</h5>
                         </div>
                     
                         </div> 
@@ -207,220 +301,7 @@
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="h2">
-      <p class="text-center">Recommended Food for you</p>
-    </div>
-        <br>
-      <div class="row">
-        <div class="col mb-4">
-          <div id="inam" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                  <div class="container">
-                    <!-- <div class="row"> -->
-                      <div class="row row-cols-1 row-cols-md-5">
-                        <div class="col mb-4">
-                          <div class="thumbnail ">
-                            <img src="  {% static 'homechef/food_img5.jpg' %}" class="img-thumbnail"  alt="img4">
-                            <div class="caption">
-                            <h5 class="text-dark">Milk shakes</h5>
-                            </div>
-                            
-                            </div>                            
-                            
-                          <!-- </div> -->
-                        </div>
-                      
-                        <div class="col mb-4">
-                          <div class="thumbnail ">
-                            <img src="  {% static 'homechef/food_img1.jpg' %}" class="img-thumbnail" alt="img4">
-                            <div class="caption">
-                  
-                            <h5 class="text-dark">Milk shakes</h5>
-                            </div>
-                          
-                            </div>                            
-                            
-                          <!-- </div> -->
-                        </div>
-                        <div class="col mb-4">
-                          <div class="thumbnail ">
-                            <img src="  {% static 'homechef/food_img2.jpg' %}" class="img-thumbnail"  alt="img4">
-                            <div class="caption">
-                            <h5 class="text-dark">Milk shakes</h5>
-                            </div>
-                          
-                            </div>                            
-                            
-                          <!-- </div> -->
-                        </div>
-                        <div class="col mb-4">
-                          <div class="thumbnail ">
-                            <img src="  {% static 'homechef/food_img3.jpg' %}" class="img-thumbnail"  alt="img4">
-                            <div class="caption">
-                            <h5 class="text-dark">Milk shakes</h5>
-                            </div>
-                            
-                            </div>                            
-                            
-                          <!-- </div> -->
-                        </div>
-                        <div class="col mb-4">
-                          <div class="thumbnail ">
-                            <img src="  {% static 'homechef/food_img4.jpg' %}" class="img-thumbnail"  alt="img4">
-                            <div class="caption">
-                            <h5 class="text-dark">Milk shakes</h5>
-                            </div>
-                        
-                            </div>                            
-                            
-                          <!-- </div> -->
-                        </div>
-                    </div>
-                  </div>
-              </div>
-  
-              <div class="carousel-item">
-                <div class="container">
-                  <!-- <div class="row"> -->
-                    <div class="row row-cols-1 row-cols-md-5">
-                      <div class="col mb-4">
-                        <div class="thumbnail ">
-                          <img src="  {% static 'homechef/food_img1.jpg' %}" class="img-thumbnail"  alt="img4">
-                          <div class="caption">
-                          <h5 class="text-dark">Milk shakes</h5>
-                          </div>
-                      
-                          </div> 
-                        <!-- </div> -->
-                      </div>
-                    
-                      <div class="col mb-4">
-                        <div class="thumbnail ">
-                          <img src="  {% static 'homechef/food_img2.jpg' %}" class="img-thumbnail"  alt="img4">
-                          <div class="caption">
-                          <h5 class="text-dark">Milk shakes</h5>
-                          </div>
-                      
-                          </div> 
-                        <!-- </div> -->
-                      </div>
-                      <div class="col mb-4">
-                        <div class="thumbnail ">
-                          <img src="  {% static 'homechef/food_img3.jpg' %}" class="img-thumbnail"  alt="img4">
-                          <div class="caption">
-                          <h5 class="text-dark">Milk shakes</h5>
-                          </div>
-                      
-                          </div> 
-                        <!-- </div> -->
-                      </div>
-                      <div class="col mb-4">
-                        <div class="thumbnail ">
-                          <img src="  {% static 'homechef/food_img4.jpg' %}" class="img-thumbnail"  alt="img4">
-                          <div class="caption">
-                          <h5 class="text-dark">Milk shakes</h5>
-                          </div>
-                      
-                          </div> 
-                        <!-- </div> -->
-                      </div>
-                      <div class="col mb-4">
-                        <div class="thumbnail ">
-                          <img src="  {% static 'homechef/food_img5.jpg' %}" class="img-thumbnail"  alt="img4">
-                          <div class="caption">
-                          <h5 class="text-dark">Milk shakes</h5>
-                          </div>
-                      
-                          </div> 
-                        <!-- </div> -->
-                      </div>
-                  </div>
-                </div>
-            </div>
-              
-            </div>
-            <!-- <p>hello</p> -->
-            <a href="#inam" class="carousel-control-prev" data-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
-            </a>
-            <!-- <p>hi</p> -->
-            <a href="#inam" class="carousel-control-next" data-slide="next">
-              <span class="carousel-control-next-icon"></span>
-            </a>
-          </div>
-        </div>
-      </div>
-  </div>
+</div>
+<br>
   <br>
-  <br>
-  <footer class="site-footer">
-    <div class="container-fluid">
-      <div class="row">
-         <div class="col-sm-12 col-md-4">
-         <h4 class="title">HOMECHEF</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin suscipit, libero a molestie consectetur, 
-                  sapien elit lacinia mi.</p>
-                  <ul class="social-icon">
-                    <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                    <a href="#" class="social"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                    <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
-                    <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
-                    </ul>
-        </div>
-
-        <div class="col-xs-6 col-md-3" >
-          <h3 class="title">COMPANY</h3>
-          <span class="acount-icon" >          
-            <a href="{% url 'about' %}">About</a>
-            <a href="#">Team</a>
-            
-          </span>
-        </div>
-
-        <div class="col-xs-6 col-md-1">
-          <h4 class="title">CATEGORY</h4>
-          <div class="category">
-            <a href="#">BUY</a>
-            <a href="#">SELL</a>
-            <a href="#">VOLUNTEER</a>
-            <a href="#">HIRE</a>
-            </div>
-        </div>
-      
-        <div class="col-sm-4 col-md-4">
-          <h4 class="title" style="padding-left:130px;">Payment Methods</h4>
-          <p style="padding-left:130px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <ul class="payment">
-          
-          <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true" style="padding-left: 80px;"></i></a></li>            
-          
-          </ul>
-        </div> 
-        
-        <div class="container"><hr>
-          <div class="row">
-          
-            <div class="col-md-8 col-sm-6 col-xs-12" >
-              
-              <p class="footer-copyright text-center py-3" style="padding-left: 300px;">Copyright &copy; 2020. Made by Team30 .IIITS
-           
-              </p>
-            </div>
-          
-        </div>
-        </div>
-      </div>
-    </div>
-</footer>
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    </body>
-    </html>
-
-   
-    
+{% endblock %}
