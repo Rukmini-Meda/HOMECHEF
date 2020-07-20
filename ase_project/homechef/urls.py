@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import include, path
 from . import views
 
 
@@ -15,5 +15,6 @@ urlpatterns = [
     path('checkout/',views.CheckoutView.as_view(),name="checkout"),
     path('bevolunteer/',views.Bevolunteer,name="bevolunteer"),
     path('Volunteerform/',views.Volunteerform,name="Volunteerform"),
-    path('selling1/',views.Selling1,name="selling1")
+    path('selling1/',views.Selling1,name="selling1"),
+    path('payment/process/',views.payment_process,name='process'), 
 ]

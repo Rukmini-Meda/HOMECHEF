@@ -18,6 +18,10 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm
+from django.urls import reverse
+from paypal.standard.forms import PayPalPaymentsForm
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
 
 def landing(request):
     return render(request, 'homechef/landing.html')
@@ -232,6 +236,30 @@ class CheckoutView(View):
 		except ObjectDoesNotExist:
 			messages.error(self.request,"You do not have an active order")
 			return redirect("order-summary")
+
+def payment_process(request):
+    # What you want the button to do.
+
+    paypal_dict = {
+        "business": settings.PAYPAL_RECEIVER_EMAIL, #Here you can change the email.
+        "amount": '1',
+        "item_name":'Give item name',
+        "invoice":'The invoice you wanted to give',
+        "currency_code": 'INR',
+        "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
+       
+        "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+    order = models.Order.objects.get(user=request.user,ordered=False)
+    context = {
+        'form': form,
+        'data': order
+    }
+    return render(request, "payment/payment.html", context)
+
 		
 			
 

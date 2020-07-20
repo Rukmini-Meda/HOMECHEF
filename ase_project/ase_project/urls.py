@@ -49,7 +49,6 @@ urlpatterns = [
     path('vendorlist/',homechef_views.vendorlist,name='vendorlist'),
     path('about/',homechef_views.about,name='about'),
     path('paypal/', include('paypal.standard.ipn.urls')),
-    path('payment/',include('payment.urls',namespace="payment")),
     path('Vendor1/',include(router1.urls)),
     path('FoodItem1/',include(router2.urls)),
     path('Ingredients1/',include(router3.urls)),

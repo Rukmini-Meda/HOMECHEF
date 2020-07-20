@@ -6,7 +6,7 @@
   <h2 class="my-5 h2 text-center">Checkout form</h2>
   <div class="col">
     <div class="card">
-      <form method="POST" class="card-body">
+      <form method="POST" action="" class="card-body">
         {% csrf_token %}
           <div class="md-form mb-5">
             <label for="address" class="">Address</label><br>
@@ -48,7 +48,7 @@
               {% endfor %}
                 
               <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              <a href="{% url 'process' %}"><button class="btn btn-primary btn-lg btn-block">Continue to checkout</button></a>
           </div>
         </div>
       </form>
