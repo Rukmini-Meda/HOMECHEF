@@ -18,8 +18,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm
+from profiles.forms import VolunteerForm, VolunteerUpdateForm
+from profiles.models import VolunteerModel
 from django.core.paginator import Paginator
 from django.db.models import Q
+from payment.views import payment_process
+from profiles.forms import VolunteerForm, VolunteerUpdateForm
+from profiles.models import VolunteerModel
 
 def landing(request):
     return render(request, 'homechef/landing.html')
@@ -335,25 +340,30 @@ class CheckoutView(View):
 		form = CheckoutForm(self.request.POST or None)
 		try:
 			order = models.Order.objects.get(user=self.request.user,ordered=False)
-			if form.is_valid():
-				street_address = form.cleaned_data.get('street_address')
-				apartment_address = form.cleaned_data.get('apartment_address')
-				country = form.cleaned_data.get('country')
-				zipfield = form.cleaned_data.get('zipfield')
-				payment_option = form.cleaned_data.get('payment_option')
-				# billing_address = models.BillingAddress(
-				# 	user = self.request.user,
-				# 	street_address = street_address,
-				# 	apartment_address = apartment_address,
-				# 	country = country,
-				# 	zipfield = zipfield
-				# )
-				# billing_address.save()
-				# order.billing_address = billing_address
-				order.save()
-				return redirect('checkout')
-			messages.warning(self.request,"Failed checkout")
-			return redirect('checkout')
+			# print(form.street_address)
+			# print(form.apartment_address)
+			# print(form.country)
+			# print(form.zipfield)
+			# print(form.payment_option)
+			# if form.is_valid():
+			# 	street_address = form.cleaned_data.get('street_address')
+			# 	apartment_address = form.cleaned_data.get('apartment_address')
+			# 	country = form.cleaned_data.get('country')
+			# 	zipfield = form.cleaned_data.get('zipfield')
+			# 	payment_option = form.cleaned_data.get('payment_option')
+			# 	# billing_address = models.BillingAddress(
+			# 	# 	user = self.request.user,
+			# 	# 	street_address = street_address,
+			# 	# 	apartment_address = apartment_address,
+			# 	# 	country = country,
+			# 	# 	zipfield = zipfield
+			# 	# )
+			# 	# billing_address.save()
+			# 	# order.billing_address = billing_address
+			# 	order.save()
+			# 	return redirect('checkout')
+			# messages.warning(self.request,"Failed checkout")
+			return redirect('payment')
 		except ObjectDoesNotExist:
 			messages.error(self.request,"You do not have an active order")
 			return redirect("order-summary")

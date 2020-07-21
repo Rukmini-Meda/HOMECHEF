@@ -30,7 +30,7 @@
                 Zip code required.
               </div>
             </div>
-          <div class="custom-control custom-checkbox">
+          <!-- <div class="custom-control custom-checkbox">
             {{ form.same_billing_address }}
             <label for="same-address" class="custom-control-label">Shipping address is the same as my billing address</label>
           </div>
@@ -38,17 +38,17 @@
             {{ form.save_info }}
             <label for="save-info" class="custom-control-label">Save this information for next time</label>
           </div>
-          <hr>
-          <div class="d-block my-3">
+          <hr> -->
+          <!-- <div class="d-block my-3">
               {% for value, name in form.fields.payment_option.choices %}    
                   <div class="custom-control custom-radio">
                       <input id="{{ name }}" name="payment_option" value="{{ value }}" type="radio" class="custom-control-input" checked required>
                       <label class="custom-control-label" for="{{ name }}">{{ name }}</label>
                   </div>
               {% endfor %}
-                
+                 -->
               <hr class="mb-4">
-              <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+              <a href="{% url 'payment' %}"><button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button></a>
           </div>
         </div>
       </form>

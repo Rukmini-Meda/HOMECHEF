@@ -24,7 +24,7 @@
           <ul class="nav navbar-nav" >
             <li><a href="{% url 'Buy' %}" style="color:black;font-weight: bold;">Buy</a></li>
             <li ><a class="nav-link" href="{% url 'selling1' %}" style="color:black;font-weight: bold;">Sell</a></li>
-            <li ><a href="#" style="color:black;font-weight: bold;">Hire</a></li>
+            <li ><a href="{% url 'hire' %}" style="color:black;font-weight: bold;">Hire</a></li>
             <li ><a class="nav-link" href="{% url 'bevolunteer' %}" style="color:black;font-weight: bold;">Volunteer</a></li>
           </ul>
           </div>
@@ -149,7 +149,7 @@
               <h3>Make people happy with your delicious recipes</h3>
               </div>
               <div class="text-center" style="color:black;">
-              <button type="button" class="btn btn-secondary btn-lg">Sell food</button>
+              <a href="{% url 'selling1' %}"><button type="button" class="btn btn-secondary btn-lg">Sell food</button></a>
               </div>
             
             </div>
@@ -209,7 +209,7 @@
           <h3>Hire people</h3>
           </div>
           <div class="text-center" style="color:black;">
-          <button type="button" class="btn btn-secondary btn-lg">Need volunteer</button>
+          <a href="{% url 'hire' %}"><button type="button" class="btn btn-secondary btn-lg">Need volunteer</button></a>
           </div>
         
         </div>
@@ -227,7 +227,7 @@
         <h3>Make people happy with your delicious recipes</h3>
         </div>
         <div class="text-center" style="color:black;">
-        <button type="button" class="btn btn-secondary btn-lg">Be as a volunteer</button>
+        <a href="{% url 'bevolunteer' %}"><button type="button" class="btn btn-secondary btn-lg">Be as a volunteer</button></a>
         </div>
       </div>
       </div>

@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
@@ -13,8 +13,9 @@ urlpatterns = [
     path('remove-single-item-from-cart/<vendor_id>/<food_id>/',views.remove_single_item_from_cart,name="remove-single-item-from-cart"),
     path('order-summary/',views.OrderSummaryView.as_view(),name="order-summary"),
     path('checkout/',views.CheckoutView.as_view(),name="checkout"),
+    path('payment/',views.payment_process,name="payment"),
     path('bevolunteer/',views.Bevolunteer,name="bevolunteer"),
-    path('Volunteerform/',views.Volunteerform,name="Volunteerform"),
+    path('Volunteerform/',views.VolunteerView,name="Volunteerform"),
     path('selling1/',views.Selling1,name="selling1"),
     path('sellerprofile/',views.sellerprofile,name="sellerprofile"),
     path('sell/',views.sell,name="sell"),
@@ -39,4 +40,6 @@ urlpatterns = [
     path('myvolunteerinfo/',views.myvolunteerinfo,name="myvolunteerinfo"),
     path('deletedsucc/',views.deletedsucc,name="deletedsucc"),
     path('addsucc/',views.addsucc,name="addsucc"),
+    path('hire/',views.hire,name="hire"),
+    path('hireweb/',views.hireweb,name="hireweb")
 ]
