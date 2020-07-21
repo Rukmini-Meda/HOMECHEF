@@ -8,14 +8,54 @@
   
   <div id="mySidebar" class="sidebar">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#">Rating</a>
+   
+      <a href="#">Filter by Rating</a>
+     
+        
+      <form action="#" method="get" class="px-4 py-3">
+        <div class="form-group">
+      
+          <select class="selectpicker form-control" onchange="location = this.options[this.selectedIndex].value;" placeholder="Default input" >
+            <option>--select--</option>
+            <option value="{% url 'foodrating1' %}">Rating 1</option>
+            <option value="{% url 'foodrating2' %}">Rating 2</option>
+            <option value="{% url 'foodrating3' %}">Rating 3</option>
+            <option value="{% url 'foodrating4' %}">Rating 4</option>
+            <option value="{% url 'foodrating5' %}">Rating 5</option>
+          </select>
+        </div>
+        
+  </form>
+
+  <a href="#">Filter by Price</a>
+     
+        
+      <form action="#" method="get" class="px-4 py-3">
+        <div class="form-group">
+      
+          <select class="selectpicker form-control" onchange="location = this.options[this.selectedIndex].value;" placeholder="Default input" >
+            <option>--select--</option>
+            <option value="{% url 'searchprice1' %}">Rs.100-Rs-250</option>
+            <option value="{% url 'searchprice2' %}">Rs.250-Rs.500</option>
+            <option value="{% url 'searchprice3' %}">Rs.500 and above</option>
+            
+          </select>
+        </div>
+        
+  </form>
+
+
+
+  
+
+    
+    
     <a href="#">Services</a>
     <a href="#">Location</a>
               
 
 
     </div>
-   
   
   
   <div id="main">
@@ -23,7 +63,7 @@
    
   </div>
   <div class="col-xs-12 col-md-6">
-    <form action="" method="GET" class="form-main  form-inline nofloat-xs pull-right pull-left-sm">
+    <form action="/searchfood" method="get" class="form-main  form-inline nofloat-xs pull-right pull-left-sm">
 
       <div class="form-group form-input-fields form-group-lg has-feedback">
 
@@ -88,7 +128,28 @@
     </div>
   {% endfor %}
 </div>
+<div class="container"> 
+  
 
+  <!-- Declare the pagination class -->
+  <ul class="pagination"> 
+
+      <!-- Specify the disabled class to style this item disabled -->
+      <li class="page-item disabled"> 
+
+          <!-- Specify tabindex to make the link non navigatable -->
+          <a class="page-link" href="#" tabindex="-1">Previous</a> 
+      </li> 
+      <li class="page-item"><a class="page-link" href="#">1</a></li> 
+      <li class="page-item"> 
+          <a class="page-link" href="#">2</a> 
+      </li> 
+      <li class="page-item"><a class="page-link" href="#">3</a></li> 
+      <li class="page-item"> 
+          <a class="page-link" href="#">Next</a> 
+      </li> 
+  </ul> 
+</div> 
 
   </div>
 {% endblock %}

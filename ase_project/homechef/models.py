@@ -28,7 +28,7 @@ class FoodItem(models.Model):
     description = models.TextField(max_length=100)
     vendors = models.ManyToManyField(Vendor)
     rating = models.IntegerField(default=3)
-    price = models.FloatField(default = 200.0)
+    price = models.FloatField(default = 10.0)
     discount_price = models.FloatField(blank=True,null=True)
     slug = models.SlugField()
     

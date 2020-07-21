@@ -1,0 +1,14 @@
+{% extends 'homechef/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container" style="padding-top: 200px;width:600px;">
+  <div class="alert alert-warning" role="alert" style="padding-top: 80px;padding-bottom: 80px;padding-left: 100px;font-size: 20px;">
+      You are succesfully registered/updated as a volunteer
+    </div>
+    <button type="button" class="btn btn-link">
+      <a href="{% url 'landing' %}">Go back to home page</a></button>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'homechef/base.html' %}
+{% load static %}
+{% block content %}
+<div class="description">
+    <img src="{% static 'homechef/images/profilepic4.png' %}" class="rounded float-left">
+    <div class="name">
+      <h3 class="text-left">Thanya</h3>
+      <p>thanya@gmail.com</p>
+      <p>6302324056</p>
+    </div>
+     <div class="experience">
+       <h3>category</h3>
+       <p>Expert in sweets</p>
+    
+    </div>
+    
+     <div class="star">
+         <h3>Rating</h4>
+    <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star"></span>
+  <span class="fa fa-star"></span>
+    </div> 
+    <div class="address">
+        <h3>Address</h3>
+        <p>Sricity,Chittoor</p>
+     
+     </div>
+     <div class="timings">
+        <h3>Timings</h3>
+        <p>9am - 6pm</p>
+     
+     </div>
+  
+</div>
+</nav>
+<div class="foodname" >
+    <h2>Cookies</h2>
+ </div>
+ <div class="container">
+     
+    
+    <br>
+    
+     <div class="ingredients">
+    <h3>Ingredients</h3>
+    <ul>
+        <li>
+            Milk
+        </li>
+        <li>
+            Sugar            </li>
+        <li>
+            Choco chips
+        </li>
+        <li>
+            Vanilla essence
+        </li>
+        <li>
+            dry fruits
+        </li>
+        <li>
+            eggs
+        </li>
+    </ul>
+     </div>
+    <div class="picture">
+        <img src="{% static 'homechef/images/food_img2.jpg' %}" class="rounded float-right" style="width:45%">
+    </div>
+    <br>
+    <br>
+    <div>
+        <h4>This is a simple cake that can be put together 
+with just five ingredients, in less than half an hour. This does not even require any flour!</h4>
+    </div>
+</div>
+<div class="text-center">
+    <button type="button" class="btn btn-secondary btn-lg">Buy again</button>
+    <button type="button" class="btn btn-secondary btn-lg">Add to cart</button>
+</div>
+{% endblock %}

@@ -18,6 +18,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm
+from django.core.paginator import Paginator
+from django.db.models import Q
 
 def landing(request):
     return render(request, 'homechef/landing.html')
@@ -41,14 +43,116 @@ def Bevolunteer(request):
 def Volunteerform(request):
 	return render(request,'homechef/index.html')
 
+def addsucc(request):
+	return render(request,'homechef/addsucc.html')
+
+def deletedsucc(request):
+	return render(request,'homechef/deletedsucc.html')
+
+def myvolunteerinfo(request):
+	return render(request,'homechef/myvolunteerinfo.html')
+
+def purchaseinfo(request):
+	return render(request,'homechef/purchaseinfo.html')
+
+def registeredsucc(request):
+	return render(request,'homechef/registeredsucc.html')
+
+def searchfood(request):
+	return render(request,'homechef/searchfood.html')
+
+def sell(request):
+	return render(request,'homechef/sell.html')
+
+def sellerprofile(request):
+	return render(request,'homechef/sellerprofile.html')
+
+def temporary(request):
+	return render(request,'homechef/temporary.html')
+
 def search(request):
-	if request.method=='POST':
-		name_search=request.POST.get('q')
-		search_list=models.Vendor.objects.filter(name=name_search)
-		return render(request,'homechef/search.html',{'data':search_list})
-	else:
-		data=models.Vendor.objects.all()
-		return render(request,'homechef/vendor.html',{'data':data})
+	#data2=None
+	fulldata=[]
+	query=request.GET.get('q')
+	data1=models.Vendor.objects.all()
+	fulldata=[f.name for f in data1]
+	
+	for i in range(len(fulldata)):
+		if(fulldata[i].upper()==query.upper()):
+			data=models.Vendor.objects.filter(name=fulldata[i])
+		else:
+			data=models.Vendor.objects.filter(name=query.capitalize())
+	
+	#data=models.Vendor.objects.filter(name=query)
+
+	
+	return render(request,'homechef/search.html',{'data':data})
+	
+def searchfood(request):
+	query=request.GET.get('q')
+	data=models.FoodItem.objects.filter(itemname=query.capitalize())
+	return render(request,'homechef/searchfood.html',{'data':data})
+
+def searchaddress(request):
+	# query=request.GET.get('q')
+	# data=models.Vendor.objects.filter(address=query.capitalize())
+	# return render(request,'homechef/search.html',{'data':data})
+	# 
+	query=request.GET.get('q')
+	data=models.Vendor.objects.filter(Q(address__icontains=query.capitalize()))
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating1(request):
+	data=models.Vendor.objects.filter(rating=1)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating2(request):
+	data=models.Vendor.objects.filter(rating=2)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating3(request):
+	data=models.Vendor.objects.filter(rating=3)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating4(request):
+	data=models.Vendor.objects.filter(rating=4)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating5(request):
+	data=models.Vendor.objects.filter(rating=5)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def foodrating1(request):
+	data=models.FoodItem.objects.filter(rating=1)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating2(request):
+	data=models.FoodItem.objects.filter(rating=2)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating3(request):
+	data=models.FoodItem.objects.filter(rating=3)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating4(request):
+	data=models.FoodItem.objects.filter(rating=4)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating5(request):
+	data=models.FoodItem.objects.filter(rating=5)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def searchprice1(request):
+	data=models.FoodItem.objects.filter(Q(price__gte=100) | Q(price__lt = 250))
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def searchprice2(request):
+	data=models.FoodItem.objects.filter(Q(price__gte= 250) | Q(price__lt = 500))
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def searchprice3(request):
+	data=models.FoodItem.objects.filter(Q(price__gte=500))
+	return render(request,'homechef/searchfood.html',{'data':data})
 
 def display(request,vendor_id):
 	data=None
@@ -234,4 +338,11 @@ class CheckoutView(View):
 			return redirect("order-summary")
 		
 			
+def listing(request):
+    vendor_list = Vendor.objects.all()
+    paginator = Paginator(vendor_list, 25) # Show 25 contacts per page.
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'vendor.html', {'page_obj': page_obj})			
 
