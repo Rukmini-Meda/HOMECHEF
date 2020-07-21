@@ -49,8 +49,22 @@ def addsucc(request):
 def deletedsucc(request):
 	return render(request,'homechef/deletedsucc.html')
 
+@login_required
 def myvolunteerinfo(request):
-	return render(request,'homechef/myvolunteerinfo.html')
+	if request.method == 'POST':
+	   v_form = VolunteerUpdateForm(request.POST, instance=request.user.profile)
+	   if v_form.is_valid():
+		   v_form.save()
+		   messages.success(request, f'Your account has been updated!')
+		   return redirect('myvolunteerinfo')
+	else:
+		v_form = VolunteerUpdateForm(instance=request.user.profile)
+
+	context = {
+		'v_form':v_form
+	}
+	return render(request,'homechef/myvolunteerinfo.html', context)
+
 
 def purchaseinfo(request):
 	return render(request,'homechef/purchaseinfo.html')
@@ -69,6 +83,13 @@ def sellerprofile(request):
 
 def temporary(request):
 	return render(request,'homechef/temporary.html')
+
+def hire(request):
+	return render(request,'homechef/hire.html')
+
+def hireweb(request):
+	return render(request, 'homechef/hireweb.html')
+
 
 def search(request):
 	#data2=None
@@ -346,3 +367,28 @@ def listing(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'vendor.html', {'page_obj': page_obj})			
 
+class VolunteerView(View):
+	def get(self, *args, **kwargs):
+		form = VolunteerForm()
+		context = {
+			'form': form
+		}
+		return render(self.request,'homechef/index.html',context)
+
+	def post(self, *args, **kwargs):
+		form = VolunteerForm(self.request.POST or None)
+		if form.is_valid():
+			address = form.cleaned_data.get('address')
+			city = form.cleaned_data.get('city')
+			state = form.cleaned_data.get('state')
+			pincode = form.cleaned_data.get('pincode')
+			volunteer_model = VolunteerModel(
+				user = self.request.user,
+				address = address,
+				city = city,
+				state = state,
+				pincode = pincode,
+			)
+			volunteer_model.save()
+			return render(self.request,'homechef/landing.html')
+		return render(self.request,'homechef/landing.html')

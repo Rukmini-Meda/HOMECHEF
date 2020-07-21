@@ -1,0 +1,49 @@
+{% extends 'homechef/base.html' %}
+{% load static %}
+{% block content %}
+<section class="bg-dark text-center">
+    <div class="container">
+        <br>
+    <h3 style="color:white;">Connect with our volunteers</h3>
+    <br>
+    <p style="color:silver;font-size:20px;">We have many talented people who use this platform to find work in
+         their local area.Pick up available shifts that match your unique skills and fit your busy schedule.We welcome all the 
+         interested people from various backgrounds and different work experience levels.</p>
+        <br>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'homechef/human1.jpg' %}"style="height:200px;">
+            <p style="color:white">Nandu</p>
+        </div>
+        <div class="col">
+            <img src="{% static 'homechef/human2.jpg' %}"style="height:200px;">
+            <p style="color:white">Suma</p>
+        </div>
+        <div class="col">
+            <img src="{% static 'homechef/human3.jpg' %}"style="height:200px;">
+            <p style="color:white">Ramya</p>
+        </div>
+    </div>
+    
+    <br>
+    <br>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<section class="text-center">
+    <div>
+        <div>
+        <h5>Hire a volunteer and let's get working!!!</h6>
+    </div>
+    <br>
+    <div>
+      <a href="{% url 'hireweb' %}">
+        <button type="button" class="btn btn-warning">Hire this way</button>
+        </a>
+    </div>
+    </div>
+    </section>
+
+{% endblock %}
