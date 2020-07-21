@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'paypal.standard.ipn',
     'payment',
     'rest_framework',
-    'django_countries'
+    'django_countries',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -145,3 +146,17 @@ EMAIL_PORT = 587
 
 PAYPAL_TEST=True
 PAYPAL_RECEIVER_EMAIL='saisrithanya.k18@iiits.in'
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+

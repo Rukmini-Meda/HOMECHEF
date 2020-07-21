@@ -20,6 +20,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm
 from django.core.paginator import Paginator
 from django.db.models import Q
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 def landing(request):
     return render(request, 'homechef/landing.html')
@@ -49,22 +51,8 @@ def addsucc(request):
 def deletedsucc(request):
 	return render(request,'homechef/deletedsucc.html')
 
-@login_required
 def myvolunteerinfo(request):
-	if request.method == 'POST':
-	   v_form = VolunteerUpdateForm(request.POST, instance=request.user.profile)
-	   if v_form.is_valid():
-		   v_form.save()
-		   messages.success(request, f'Your account has been updated!')
-		   return redirect('myvolunteerinfo')
-	else:
-		v_form = VolunteerUpdateForm(instance=request.user.profile)
-
-	context = {
-		'v_form':v_form
-	}
-	return render(request,'homechef/myvolunteerinfo.html', context)
-
+	return render(request,'homechef/myvolunteerinfo.html')
 
 def purchaseinfo(request):
 	return render(request,'homechef/purchaseinfo.html')
@@ -84,35 +72,34 @@ def sellerprofile(request):
 def temporary(request):
 	return render(request,'homechef/temporary.html')
 
-def hire(request):
-	return render(request,'homechef/hire.html')
+def search (request):
+    #data2=None
+    fulldata=[]
+    query=request.GET.get('q')
+    data1=models.Vendor.objects.all()
+    fulldata=[f.name for f in data1]
+    
+    for i in range(len(fulldata)):
+        if(fulldata[i].upper()==query.upper()):
+            data=models.Vendor.objects.filter(name=fulldata[i])
+        else:
+            data=models.Vendor.objects.filter(Q(name__contains=query.capitalize()) | Q(description__contains=query.capitalize()))
+    
+    #data=models.Vendor.objects.filter(name=query)
 
-def hireweb(request):
-	return render(request, 'homechef/hireweb.html')
+    
+    return render(request,'homechef/search.html',{'data':data})
 
 
-def search(request):
-	#data2=None
-	fulldata=[]
-	query=request.GET.get('q')
-	data1=models.Vendor.objects.all()
-	fulldata=[f.name for f in data1]
-	
-	for i in range(len(fulldata)):
-		if(fulldata[i].upper()==query.upper()):
-			data=models.Vendor.objects.filter(name=fulldata[i])
-		else:
-			data=models.Vendor.objects.filter(name=query.capitalize())
-	
-	#data=models.Vendor.objects.filter(name=query)
 
-	
-	return render(request,'homechef/search.html',{'data':data})
-	
 def searchfood(request):
-	query=request.GET.get('q')
-	data=models.FoodItem.objects.filter(itemname=query.capitalize())
-	return render(request,'homechef/searchfood.html',{'data':data})
+    query=request.GET.get('q')
+     
+    data=models.FoodItem.objects.filter(Q(itemname__contains=query.capitalize()) | Q(description__contains=query.capitalize()) | Q(ingredients__name__contains=query.capitalize()))
+    return render(request,'homechef/searchfood.html',{'data':data})
+
+
+
 
 def searchaddress(request):
 	# query=request.GET.get('q')
@@ -217,6 +204,8 @@ def vendorlist(request,food_id):
 
 
 class VendorList(viewsets.ModelViewSet):
+	# authentication_classes = [SessionAuthentication, BasicAuthentication]
+	# permission_classes = [IsAuthenticated]
 	
 	queryset=models.Vendor.objects.all()
 	serializer_class=VendorSerializer
@@ -367,28 +356,3 @@ def listing(request):
     page_obj = paginator.get_page(page_number)
     return render(request, 'vendor.html', {'page_obj': page_obj})			
 
-class VolunteerView(View):
-	def get(self, *args, **kwargs):
-		form = VolunteerForm()
-		context = {
-			'form': form
-		}
-		return render(self.request,'homechef/index.html',context)
-
-	def post(self, *args, **kwargs):
-		form = VolunteerForm(self.request.POST or None)
-		if form.is_valid():
-			address = form.cleaned_data.get('address')
-			city = form.cleaned_data.get('city')
-			state = form.cleaned_data.get('state')
-			pincode = form.cleaned_data.get('pincode')
-			volunteer_model = VolunteerModel(
-				user = self.request.user,
-				address = address,
-				city = city,
-				state = state,
-				pincode = pincode,
-			)
-			volunteer_model.save()
-			return render(self.request,'homechef/landing.html')
-		return render(self.request,'homechef/landing.html')

@@ -11,9 +11,15 @@
   <br>
   
   <div class="sellbutton">
-    
-  <button type="button" class="btn btn-light" ><a href="{% url 'sell' %}">Start Selling now</a></button>
-  </a>
+    {% if request.user.is_authenticated %}
+            <li >
+              <button type="button" class="btn btn-light" ><a href="{% url 'sell' %}">Start Selling now</a></button>
+            </li>
+              {% else %}
+              <li ><button type="button" class="btn btn-light" ><a href="{% url 'login' %}">Start Selling now</a></button></li>
+              {% endif %}
+  
+  
   </div>
   </div>
   </section>

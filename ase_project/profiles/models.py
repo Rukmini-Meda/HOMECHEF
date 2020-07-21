@@ -23,12 +23,4 @@ class Profile(models.Model):
             img.save(self.image.path)
 
 
-class VolunteerModel(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    address = models.CharField(max_length=200)
-    city = models.CharField(max_length=20)
-    state = models.CharField(max_length=20)
-    pincode = models.CharField(max_length=6)
 
-    def __str__(self):
-        return self.user.username

@@ -56,13 +56,11 @@ def Login(request):
 		username = request.POST.get('username')
 		password = request.POST.get('password')
 		user = authenticate(request, username=username, password=password)
-		print(user)
 		if user is not None:
 			form = login(request,user)
 			user=request.user
 			messages.success(request,f'You are successfully logged in!!')
 			user.save()
-			print("landing")
 			return redirect('landing')
 		else:
 			messages.info(request,f'Please verify the details and login again')
