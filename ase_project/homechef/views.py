@@ -96,28 +96,29 @@ def hireweb(request):
 	return render(request, 'homechef/hireweb.html')
 
 
-def search(request):
-	#data2=None
-	fulldata=[]
-	query=request.GET.get('q')
-	data1=models.Vendor.objects.all()
-	fulldata=[f.name for f in data1]
-	
-	for i in range(len(fulldata)):
-		if(fulldata[i].upper()==query.upper()):
-			data=models.Vendor.objects.filter(name=fulldata[i])
-		else:
-			data=models.Vendor.objects.filter(name=query.capitalize())
-	
-	#data=models.Vendor.objects.filter(name=query)
+def search (request):
+    #data2=None
+    fulldata=[]
+    query=request.GET.get('q')
+    data1=models.Vendor.objects.all()
+    fulldata=[f.name for f in data1]
+    
+    for i in range(len(fulldata)):
+        if(fulldata[i].upper()==query.upper()):
+            data=models.Vendor.objects.filter(name=fulldata[i])
+        else:
+            data=models.Vendor.objects.filter(Q(name__contains=query.capitalize()) | Q(description__contains=query.capitalize()))
+    
+    #data=models.Vendor.objects.filter(name=query)
 
-	
-	return render(request,'homechef/search.html',{'data':data})
+    
+    return render(request,'homechef/search.html',{'data':data})
 	
 def searchfood(request):
-	query=request.GET.get('q')
-	data=models.FoodItem.objects.filter(itemname=query.capitalize())
-	return render(request,'homechef/searchfood.html',{'data':data})
+    query=request.GET.get('q')
+     
+    data=models.FoodItem.objects.filter(Q(itemname__contains=query.capitalize()) | Q(description__contains=query.capitalize()) | Q(ingredients__name__contains=query.capitalize()))
+    return render(request,'homechef/searchfood.html',{'data':data})
 
 def searchaddress(request):
 	# query=request.GET.get('q')
