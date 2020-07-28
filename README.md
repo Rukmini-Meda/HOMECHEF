@@ -1,7 +1,7 @@
 # HOMECHEF
   This project is a part of Applied Software Engineering - 1 ( ASE ) Course at IIIT Sri City. The project provides a platform for home entrepreneurs who want to cook and earn. It also helps users in finding volunteers to help for an event.
 
-## Guidelines for development and contribution (only for team members)
+## Guidelines for development and contribution
 
     An issue must be created for any feature addition or bug fixation. It should be labelled accordingly. Developers working on a particular issue must create a branch and commit changes in that branch. Further, a pull request from that branch must be made to the master branch of this repository for merging. Following are the steps that have to be strictly followed for contributing to this project
     
