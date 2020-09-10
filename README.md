@@ -1,7 +1,7 @@
 # HOMECHEF
   This project is a part of Applied Software Engineering - 1 ( ASE ) Course at IIIT Sri City. The project provides a platform for home entrepreneurs who want to cook and earn. It also helps users in finding volunteers to help for an event.
   
-#### You can find our project live [here](http://homechef30.pythonanywhere.com/) (Not the latest version, we will update the latest version sooner)
+#### You can find our project live [here](http://homechef30.pythonanywhere.com/)
 #### If you find the project interesting and have ideas for the project or have found bugs in the project, feel free to raise an issue.
 #### If you like the project, don't forget to give it a :star:
 
