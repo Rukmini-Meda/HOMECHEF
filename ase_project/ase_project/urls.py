@@ -23,6 +23,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import routers
+# from users.views import login_view
 
 router1=routers.DefaultRouter()
 router1.register('homechef',homechef_views.VendorList)
@@ -39,7 +40,7 @@ urlpatterns = [
     path('', include('homechef.urls')),
     path('register/',user_views.register,name='register'),
     path('profile/',user_views.profile,name='profile'),
-    path('login/',user_views.Login,name='login'),
+    path('login/',user_views.login_view,name='login'),
     path('logout/',auth_views.LogoutView.as_view(template_name='users/logout.html'),name='logout'),
     path('Buy/',homechef_views.Buy,name='Buy'),
     path('Vendor/',homechef_views.Vendor,name='Vendor'),
@@ -53,10 +54,7 @@ urlpatterns = [
     path('Vendor1/',include(router1.urls)),
     path('FoodItem1/',include(router2.urls)),
     path('Ingredients1/',include(router3.urls)),
-    
-
-    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        user_views.activate, name='activate'),
+    path('activate/<uidb64>/<token>',user_views.activate,name='activate'),
     path('password-reset/',
          auth_views.PasswordResetView.as_view(template_name='users/password_reset.html'),
          name='password_reset'),

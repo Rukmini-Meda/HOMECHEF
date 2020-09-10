@@ -7,6 +7,7 @@ class VendorSerializer(serializers.ModelSerializer):
     class Meta:
         model=Vendor
         fields='__all__'
+        
 class FoodItemSerializer(serializers.ModelSerializer):
     class Meta:
         model=FoodItem

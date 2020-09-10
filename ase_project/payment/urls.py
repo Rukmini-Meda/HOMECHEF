@@ -1,9 +1,8 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
 app_name = 'payment'
 
 urlpatterns=[
-    url(r'^process/$',views.payment_process,name='process'),
-   
+    path('process/',views.payment_process,name='process'),
 ]

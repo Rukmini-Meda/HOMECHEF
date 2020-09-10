@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from . import models
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -54,23 +53,6 @@ def addsucc(request):
 def deletedsucc(request):
 	return render(request,'homechef/deletedsucc.html')
 
-@login_required
-def myvolunteerinfo(request):
-	if request.method == 'POST':
-	   v_form = VolunteerUpdateForm(request.POST, instance=request.user.profile)
-	   if v_form.is_valid():
-		   v_form.save()
-		   messages.success(request, f'Your account has been updated!')
-		   return redirect('myvolunteerinfo')
-	else:
-		v_form = VolunteerUpdateForm(instance=request.user.profile)
-
-	context = {
-		'v_form':v_form
-	}
-	return render(request,'homechef/myvolunteerinfo.html', context)
-
-
 def purchaseinfo(request):
 	return render(request,'homechef/purchaseinfo.html')
 
@@ -94,92 +76,6 @@ def hire(request):
 
 def hireweb(request):
 	return render(request, 'homechef/hireweb.html')
-
-
-def search (request):
-    #data2=None
-    fulldata=[]
-    query=request.GET.get('q')
-    data1=models.Vendor.objects.all()
-    fulldata=[f.name for f in data1]
-    
-    for i in range(len(fulldata)):
-        if(fulldata[i].upper()==query.upper()):
-            data=models.Vendor.objects.filter(name=fulldata[i])
-        else:
-            data=models.Vendor.objects.filter(Q(name__contains=query.capitalize()) | Q(description__contains=query.capitalize()))
-    
-    #data=models.Vendor.objects.filter(name=query)
-
-    
-    return render(request,'homechef/search.html',{'data':data})
-	
-def searchfood(request):
-    query=request.GET.get('q')
-     
-    data=models.FoodItem.objects.filter(Q(itemname__contains=query.capitalize()) | Q(description__contains=query.capitalize()) | Q(ingredients__name__contains=query.capitalize()))
-    return render(request,'homechef/searchfood.html',{'data':data})
-
-def searchaddress(request):
-	# query=request.GET.get('q')
-	# data=models.Vendor.objects.filter(address=query.capitalize())
-	# return render(request,'homechef/search.html',{'data':data})
-	# 
-	query=request.GET.get('q')
-	data=models.Vendor.objects.filter(Q(address__icontains=query.capitalize()))
-	return render(request,'homechef/search.html',{'data':data})	
-
-def searchrating1(request):
-	data=models.Vendor.objects.filter(rating=1)
-	return render(request,'homechef/search.html',{'data':data})	
-
-def searchrating2(request):
-	data=models.Vendor.objects.filter(rating=2)
-	return render(request,'homechef/search.html',{'data':data})	
-
-def searchrating3(request):
-	data=models.Vendor.objects.filter(rating=3)
-	return render(request,'homechef/search.html',{'data':data})	
-
-def searchrating4(request):
-	data=models.Vendor.objects.filter(rating=4)
-	return render(request,'homechef/search.html',{'data':data})	
-
-def searchrating5(request):
-	data=models.Vendor.objects.filter(rating=5)
-	return render(request,'homechef/search.html',{'data':data})	
-
-def foodrating1(request):
-	data=models.FoodItem.objects.filter(rating=1)
-	return render(request,'homechef/searchfood.html',{'data':data})	
-
-def foodrating2(request):
-	data=models.FoodItem.objects.filter(rating=2)
-	return render(request,'homechef/searchfood.html',{'data':data})	
-
-def foodrating3(request):
-	data=models.FoodItem.objects.filter(rating=3)
-	return render(request,'homechef/searchfood.html',{'data':data})	
-
-def foodrating4(request):
-	data=models.FoodItem.objects.filter(rating=4)
-	return render(request,'homechef/searchfood.html',{'data':data})	
-
-def foodrating5(request):
-	data=models.FoodItem.objects.filter(rating=5)
-	return render(request,'homechef/searchfood.html',{'data':data})	
-
-def searchprice1(request):
-	data=models.FoodItem.objects.filter(Q(price__gte=100) | Q(price__lt = 250))
-	return render(request,'homechef/searchfood.html',{'data':data})	
-
-def searchprice2(request):
-	data=models.FoodItem.objects.filter(Q(price__gte= 250) | Q(price__lt = 500))
-	return render(request,'homechef/searchfood.html',{'data':data})	
-
-def searchprice3(request):
-	data=models.FoodItem.objects.filter(Q(price__gte=500))
-	return render(request,'homechef/searchfood.html',{'data':data})
 
 def display(request,vendor_id):
 	data=None
@@ -368,7 +264,91 @@ class CheckoutView(View):
 		except ObjectDoesNotExist:
 			messages.error(self.request,"You do not have an active order")
 			return redirect("order-summary")
-		
+
+def search (request):
+    #data2=None
+    fulldata=[]
+    query=request.GET.get('q')
+    data1=models.Vendor.objects.all()
+    fulldata=[f.name for f in data1]
+    
+    for i in range(len(fulldata)):
+        if(fulldata[i].upper()==query.upper()):
+            data=models.Vendor.objects.filter(name=fulldata[i])
+        else:
+            data=models.Vendor.objects.filter(Q(name__contains=query.capitalize()) | Q(description__contains=query.capitalize()))
+    
+    #data=models.Vendor.objects.filter(name=query)
+
+    
+    return render(request,'homechef/search.html',{'data':data})
+	
+def searchfood(request):
+    query=request.GET.get('q')
+     
+    data=models.FoodItem.objects.filter(Q(itemname__contains=query.capitalize()) | Q(description__contains=query.capitalize()) | Q(ingredients__name__contains=query.capitalize()))
+    return render(request,'homechef/searchfood.html',{'data':data})
+
+def searchaddress(request):
+	# query=request.GET.get('q')
+	# data=models.Vendor.objects.filter(address=query.capitalize())
+	# return render(request,'homechef/search.html',{'data':data})
+	# 
+	query=request.GET.get('q')
+	data=models.Vendor.objects.filter(Q(address__icontains=query.capitalize()))
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating1(request):
+	data=models.Vendor.objects.filter(rating=1)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating2(request):
+	data=models.Vendor.objects.filter(rating=2)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating3(request):
+	data=models.Vendor.objects.filter(rating=3)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating4(request):
+	data=models.Vendor.objects.filter(rating=4)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def searchrating5(request):
+	data=models.Vendor.objects.filter(rating=5)
+	return render(request,'homechef/search.html',{'data':data})	
+
+def foodrating1(request):
+	data=models.FoodItem.objects.filter(rating=1)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating2(request):
+	data=models.FoodItem.objects.filter(rating=2)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating3(request):
+	data=models.FoodItem.objects.filter(rating=3)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating4(request):
+	data=models.FoodItem.objects.filter(rating=4)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def foodrating5(request):
+	data=models.FoodItem.objects.filter(rating=5)
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def searchprice1(request):
+	data=models.FoodItem.objects.filter(Q(price__gte=100) | Q(price__lt = 250))
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def searchprice2(request):
+	data=models.FoodItem.objects.filter(Q(price__gte= 250) | Q(price__lt = 500))
+	return render(request,'homechef/searchfood.html',{'data':data})	
+
+def searchprice3(request):
+	data=models.FoodItem.objects.filter(Q(price__gte=500))
+	return render(request,'homechef/searchfood.html',{'data':data})		
 			
 def listing(request):
     vendor_list = Vendor.objects.all()
@@ -403,3 +383,19 @@ class VolunteerView(View):
 			volunteer_model.save()
 			return render(self.request,'homechef/landing.html')
 		return render(self.request,'homechef/landing.html')
+
+@login_required
+def myvolunteerinfo(request):
+	if request.method == 'POST':
+	   v_form = VolunteerUpdateForm(request.POST, instance=request.user.profile)
+	   if v_form.is_valid():
+		   v_form.save()
+		   messages.success(request, f'Your account has been updated!')
+		   return redirect('myvolunteerinfo')
+	else:
+		v_form = VolunteerUpdateForm(instance=request.user.profile)
+
+	context = {
+		'v_form':v_form
+	}
+	return render(request,'homechef/myvolunteerinfo.html', context)

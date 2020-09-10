@@ -4,6 +4,8 @@ from django.shortcuts import reverse
 from django_countries.fields import CountryField
 
 # Create your models here.
+
+# Model for a vendor
 class Vendor(models.Model):
     name = models.CharField(max_length=30)
     imageFileName = models.CharField(max_length=30,default="profilepic4.png")
@@ -21,6 +23,7 @@ class Vendor(models.Model):
     def food_list(self):
         return self.food_items.all()
 
+# Model for a food item
 class FoodItem(models.Model):
     itemname = models.CharField(max_length=30)
     imageFileName = models.CharField(max_length=30,default="food_img2.jpg")
@@ -42,16 +45,14 @@ class FoodItem(models.Model):
         return reverse("product",kwargs={
             'slug': self.slug
         })
-    # def get_add_to_cart_url(self):
-    #     return reverse("add-to-cart",kwargs={
-    #         'slug': self.slug
-    #     })
 
+# Model for an ingredient
 class Ingredients(models.Model):
     name = models.CharField(max_length=30)
     def __str__(self):
         return self.name
 
+# Model for item in an order
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE,blank=True,null=True)
     ordered = models.BooleanField(default=False)
@@ -63,49 +64,41 @@ class OrderItem(models.Model):
     def __str__(self):
         return f"{self.quantity} of {self.item.itemname}"
 
+    # Calculated total item price
     def get_total_item_price(self):
-        print("qwerty")
         print(self.quantity * self.item.price)
         return self.quantity * self.item.price
 
+    # Calculate total discount price
     def get_total_discount_price(self):
-        print("dasfe")
         print(self.quantity * self.item.discount_price)
         return self.quantity * self.item.discount_price
 
+    # Calculates amount saved through discount
     def get_amount_saved(self):
         return self.get_total_item_price() - self.get_total_discount_price()
     
+    # Calculates final price
     def get_final_price(self):
         if self.item.discount_price:
             return self.get_total_discount_price()
         else:
             return self.get_total_item_price()
 
+# Model for order
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
     items = models.ManyToManyField(OrderItem)
     start_date = models.DateTimeField(auto_now_add=True)
     ordered_date = models.DateTimeField()
     ordered = models.BooleanField(default = False)
-    # billing_address = models.ForeignKey('BillingAddress',on_delete=models.SET_NULL,blank=True,null=True)
-
+    
     def __str__(self):
         return self.user.username
 
+    # Calculated order total price
     def get_order_total(self):
         total = 0
         for orderitem in self.items.all():
             total += orderitem.get_final_price()
         return total
-
-# class BillingAddress(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
-#     street_address = models.CharField(max_length=100)
-#     apartment_address = models.CharField(max_length=100)
-#     country = CountryField(multiple=False)
-#     zipfield = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.user.username
-

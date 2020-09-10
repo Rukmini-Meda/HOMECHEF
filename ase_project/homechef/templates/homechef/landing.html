@@ -1,4 +1,5 @@
 {% load static %}
+{% load cart_template_tags %}
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,13 +10,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
-    <body>
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-{{message.tags}}">{{message}}</div>
-          {% endfor %}
-        {% endif %}
+</head>
+<body>
       <nav class="navbar navbar-inverse" style="border:0;background-color:#ffcb00;color:black;padding: 10px;margin: 0;border-radius: 0;">
         <div class="container-fluid">
           <div class="logo" style="float: left;width: 130px"><img src="{% static 'homechef/images/logo2.png' %}" alt="LOGO" width="50%" height="40%"></div>
@@ -32,7 +28,7 @@
             <ul class="nav navbar-nav navbar-right">
               {% if request.user.is_authenticated %}
                   <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'profile' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span>Profile</a></button></li>
-                  
+                  <li><button type="button" class="btn btn-dark" style="background-color:black;margin: 5px;"><a href="{% url 'order-summary' %}" style="color: white;text-decoration: none;"><span class="badge z-depth-1 mr-1" style="background-color: white;color: black;"> {{ request.user|cart_items_count }} </span><i style="font-size:16px" class="fa fa-shopping-cart"></i>Cart</a></button></li>
                   <li><button type="button" class="btn" style="background-color: black;margin: 5px;"><a href="{% url 'logout' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-log-in"></span> Logout</a></button></li>
               {% else %}
                   <li><button type="button" class="btn" style="background-color:black;margin: 5px;"><a href="{% url 'register' %}" style="color: white;text-decoration: none;"><span class="glyphicon glyphicon-user"></span> Signup</a></button></li>
@@ -44,12 +40,6 @@
           
       </nav>
     <div id="carousel-example m-0" class="carousel slide" data-ride="carousel">
-    <!-- <ol class="carousel-indicators">
-      <li data-target="#carousel-example" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example" data-slide-to="1"></li>
-      <li data-target="#carousel-example" data-slide-to="2"></li>
-    </ol> -->
-
   <div class="carousel-inner">
     <div class="item active">
       <a href="#"><img src="{% static 'homechef/images/pic1.jpeg' %}" style="width: 1537px;height: 550px;"/></a>
@@ -64,13 +54,6 @@
       
     </div>
   </div>
-
-  <!-- <a class="left carousel-control" href="#carousel-example" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a> -->
 </div>
   <div class="container">
     <h2 style="text-align: center;font-weight: bold;padding:50px;;">Our Popular Dishes</h2> 
@@ -109,14 +92,11 @@
   </div>
   <div class="container-fluid" style="background-color:#ffcb00;">
     <div class="row" style="padding: 40px;">
-        <!-- Info Card with social icons -->
         <div class="col-md-4" style="float: left;padding: 25px;">
           <img src="{%static 'homechef/images/chef-cooking.png'%}" width="400px" height="350px" >
         </div>
         <div class="flip-class">
-          <div class="row">
-            
-             
+          <div class="row">    
             <div class="info-card">
                 <div class="front" style="padding:5px 25px;">
                   <h1>Hungry?!!</h1>
@@ -132,11 +112,9 @@
                   <a href="{% url 'Buy' %}">
                 <button type="button" class="btn btn-secondary btn-lg" >Buy food</button>
                 </a>
-                </div>
-              
+                </div>    
               </div>
             </div>
-          
             <div class="info-card">
               <div class="front" style="padding:5px 25px;">
                 <h1></h1>
@@ -151,14 +129,11 @@
               <div class="text-center" style="color:black;">
               <a href="{% url 'selling1' %}"><button type="button" class="btn btn-secondary btn-lg">Sell food</button></a>
               </div>
-            
             </div>
           </div>
         </div>
         </div>
-  </div>
-      <!-- Scrolling enabled for longer content -->
-      
+  </div>  
   </div>
   <div class="container" style="padding: 60px;">
     <div class="row">
@@ -292,22 +267,13 @@
               <h4 class="title"style="padding-left:130px;">Payment Methods</h4>
               <p style="padding-left:130px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
               <ul class="payment" style="padding-left:90px;">
-              <!-- <li><a href="#"><i class="fa fa-cc-amex" aria-hidden="true"></i></a></li> -->
               <li><a href="#"><i class="fa fa-credit-card" aria-hidden="true"></i></a></li>            
-              <!-- <li><a href="#"><i class="fa fa-paypal" aria-hidden="true"></i></a></li>
-              <li><a href="#"><i class="fa fa-cc-visa" aria-hidden="true"></i></a></li> -->
               </ul>
               </div>
           </div>
           <hr>
-          
           <div class="row text-center"> © 2020. Made by Team30, IIITS.</div>
           </div>
-          
-          
       </footer> 
-  
 </body>
-  
-
 </html>

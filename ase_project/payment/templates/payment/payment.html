@@ -1,7 +1,3 @@
-
-<!-- <h1 style="padding-left:100px;padding-top: 50px;;">Pay now</h1> -->
-<!-- writes out the form tag automatically -->
-
 {% extends 'homechef/base.html' %}
 {% load cart_template_tags %}
 {% load static %}
@@ -11,9 +7,7 @@
             <span class="text-muted">Your cart</span>
             <span class="badge badge-secondary badge-pill">{{ request.user|cart_items_count }}</span>
           </h4>
-        
-          <!-- Cart -->
-          
+          <!-- Cart -->        
           <ul class="list-group mb-3 z-depth-1">
             {% for orderitem in data.items.all %}
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -29,24 +23,10 @@
                 </li>
             {% endfor %}
             <li class="list-group-item d-flex justify-content-between">
-              <span>Total (USD)</span>
+              <span>Total (Rs.)</span>
               <strong>{{ data.get_order_total }}</strong>
             </li>
-            </ul>
-          
-          
-          <!-- Cart -->
-        
-          <!-- Promo code -->
-          <!-- <form class="card p-2">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Promo code" aria-label="Recipient's username" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-secondary btn-md waves-effect m-0" type="button">Redeem</button>
-              </div>
-            </div>
-          </form> -->
-          <!-- Promo code -->
+            </ul> 
           {{ form.render }}
        
     </div>

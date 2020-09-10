@@ -15,12 +15,8 @@ def payment_process(request):
         "invoice":'The invoice you wanted to give',
         "currency_code": 'INR',
         "notify_url": request.build_absolute_uri(reverse('paypal-ipn')),
-       
         "custom": "premium_plan",  # Custom command to correlate to some function later (optional)
     }
-    
-    for item in order.items.all():
-        print(item)
     # Create the instance.
     form = PayPalPaymentsForm(initial=paypal_dict)
     context = {
