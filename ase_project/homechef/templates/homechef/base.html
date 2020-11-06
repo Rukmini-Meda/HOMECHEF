@@ -16,26 +16,24 @@
     <link rel="stylesheet" href="{% static 'homechef/css/product.css' %}">   
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light"  style="background-color: #ffcb00;">
+  <nav class="navbar navbar-expand-lg navbar-light"  style="background-color:#DCDCDC	">
     <div class="logo" style="float: left"><img src="{% static 'homechef/images/logo2.png' %}" alt="LOGO" width="50%" height="40%"></div>
-    <a class="navbar-brand font-weight-bold" href="{% url 'landing' %}">HOMECHEF</a>
+    <a class="navbar-brand font-weight-bold" href="{% url 'landing' %}">Mommys cooking</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'Buy' %}" style="color:black;">Buy</a>
+          <a class="nav-link" href="{% url 'Buy' %}" style="color:black;font-weight: bold;">Buy</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'selling1' %}" style="color:black;">Sell</a>
+          <a class="nav-link" href="{% url 'selling1' %}" style="color:black;font-weight: bold;">Sell</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'hire' %}" style="color:black;">Hire</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'bevolunteer' %}" style="color:black;">Volunteer</a>
-        </li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'hire' %}" style="color:black;font-weight: bold;">Hire</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'bevolunteer' %}" style="color:black;font-weight: bold;">Volunteer</a></li>
+      
+        
       </ul>
   
       <ul class="navbar-nav ml-auto">
